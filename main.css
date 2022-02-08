@@ -1,0 +1,50 @@
+.title {
+    background-color: #383838;
+    color: #7cb8bb;
+}
+
+body {
+    background-color:  #3f3f3f;
+}
+
+p {
+    color: #7cb8bb;
+}
+
+
+.w-25 {
+		max-width: 400px;
+}
+
+.responsive-text {
+    font-size: 2em;
+}
+
+.btn-default {
+    background-color: rgba(63,63,63,1);
+    color:#FFF;
+    border-color:  rgba(63,63,63,1);
+}
+
+.carousel-control-next:active, .carousel-control-prev:active, .carousel-control-next.active, .carousel-control-prev.active, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: #383838;
+    color:#FFF;
+    border-color:  rgba(63,63,63,1);
+
+}
+
+#spacer {
+		height: 10em;
+}
+
+@media screen and (max-width: 1000px) {
+  .responsive-text {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .responsive-text {
+    font-size: 3px;
+  }
+}
