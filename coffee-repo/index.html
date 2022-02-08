@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Coffee Log</title>
+    <script src="https://d2xbde8hxsg71f.cloudfront.net/main.js"></script>
+    <style>
+      .resizedTextbox {width: 100px; height: 60px}
+    </style>
+  </head>
+  <body>
+    <h1>
+      This is a log of sachin's coffee
+    </h1>
+    <form onsubmit="formsubmit()">
+      <div class="field">
+        <label for="grams">Coffee grams:</label>
+        <input type="text" id="grams" name="grams" placeholder="30" value="30"/>
+        <small></small>
+      </div>
+       <div class="field">
+        <label for="mlb">Bloom Phase mL:</label>
+        <input type="text" id="mlb" name="mlb" placeholder="60" value="60">
+        <small></small>
+      </div>
+       <div class="field">
+        <label for="ml1">Phase 1 mL:</label>
+        <input type="text" id="ml1" name="ml1" placeholder="240" value="240" />
+        <small></small>
+      </div>
+       <div class="field">
+        <label for="ml2">Phase 2 mL:</label>
+        <input type="text" id="ml2" name="ml2" placeholder="160" value="160" />
+        <small></small>
+       </div>
+       <div class="field">
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes" cols="40" rows="5"></textarea>
+        <small></small>
+      </div>
+   <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
