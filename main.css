@@ -7,6 +7,7 @@ body {
     background-color:  #3f3f3f;
 }
 
+
 p {
     color: #7cb8bb;
 }
@@ -14,6 +15,13 @@ p {
 
 .w-25 {
 		max-width: 400px;
+}
+
+.responsive-img {
+		border-radius: 2%;
+		width: 15%;
+		max-width: 400px;
+		height: auto;
 }
 
 .responsive-text {
@@ -34,17 +42,29 @@ p {
 }
 
 #spacer {
-		height: 10em;
+		height: 5em;
 }
 
 @media screen and (max-width: 1000px) {
   .responsive-text {
     font-size: 3em;
   }
+	.responsive-img {
+			border-radius: 2%;
+			width: 30%;
+			height: auto;
+	}
+
 }
 
 @media screen and (max-width: 600px) {
   .responsive-text {
-    font-size: 3px;
+    font-size: 4em;
   }
+	.responsive-img {
+			border-radius: 2%;
+			width: 60%;
+			height: auto;
+	}
+
 }
