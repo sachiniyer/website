@@ -15,7 +15,7 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
   customLoadingScreenCss.type = 'text/css';
   customLoadingScreenCss.innerHTML = `
     #customLoadingScreenDiv{
-        background-color: #3797a4;
+        background-color: #3f3f3f;
         color: white;
         font-size:50px;
         text-align:center;
