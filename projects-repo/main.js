@@ -3,9 +3,11 @@
 const url = "https://api.github.com/users/sachiniyer/repos";
 const weight_url = "https://d2gvczs6qb9wf0.cloudfront.net/weights.json";
 //const weight_url = "http://127.0.0.1:8000/weights.json";
-var weights;
+var weights = [];
+var blackweights = [];
 var reporaw;
 var reponames = [];
+var retain = {};
 
 const classMap = {
   h1: 'hidden',
@@ -28,7 +30,10 @@ conv.setFlavor('github');
 // if it does not exists just display readme.md
 // then append head and body to dict that has weights.
 
+
 async function processrepos(repos){
+
+  var elements = {};
   for (let i = 0; i < repos.length; i++) {
     var name = repos[i].name;
     var branch = repos[i].default_branch;
@@ -36,7 +41,6 @@ async function processrepos(repos){
     var repourl = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/webcontent.md";
     var repourl_back = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/README.md";
 
-    var elements = {};
     var flag = false;
     await fetch(repourl)
       .then((response) => {
@@ -47,16 +51,9 @@ async function processrepos(repos){
       })
       .then((data) => {
         if (flag) {
-          var newhead = document.createElement('h1');
-          var a = document.createElement('a');
-          a.href = "https://github.com/sachiniyer/" + name;
-          a.innerHTML = name;
-          newhead.appendChild(a);
-          console.log(name);
-          var newbod = conv.makeHtml(data);
-          var div = document.createElement("div");
-          div.innerHTML = newbod;
-          elements[name] = (newhead, div);
+          elements[name] = {href: "https://github.com/sachiniyer" + name,
+                            title: name,
+                            body: data};
         }
       })
       .catch((err) => {
@@ -71,24 +68,43 @@ async function processrepos(repos){
           return response.text();
         })
         .then((data) => {
-          var newhead = document.createElement('h1');
-          var a = document.createElement('a');
-          a.href = "https://github.com/sachiniyer/" + name;
-          a.innerHTML = name;
-          newhead.appendChild(a);
-          console.log(name);
-          var newbod = conv.makeHtml(data);
-          var div = document.createElement("div");
-          div.innerHTML = newbod;
-
-          elements[name] = (newhead, div);
+          elements[name] = {href: "https://github.com/sachiniyer" + name,
+                            title: name,
+                            body: data};
         })
         .catch((err) => {
           console.log("README.md not found for: " + name);
         });
-
     }
-    console.log(elements);
+  }
+
+  var final_list = [];
+  for (var w of weights) {
+    if (elements[w] != null) {
+      final_list.push(elements[w]);
+    }
+  }
+  var test_final = (e) => { for (let k of final_list) { if (k.title == e) { return false; } } return true; };
+
+  for (var e in elements) {
+    if (test_final(e) && !(blackweights.includes(e))) {
+      final_list.push(elements[e]);
+    }
+  }
+
+
+  for (var i of final_list) {
+    var newhead = document.createElement('h1');
+    var a = document.createElement('a');
+    a.href = "https://github.com/sachiniyer/" + i.title;
+    a.innerHTML = i.title;
+    newhead.appendChild(a);
+    console.log(i.title);
+    var newbod = conv.makeHtml(i.body);
+    var div = document.createElement("div");
+    div.innerHTML = newbod;
+    document.getElementById("repos").appendChild(newhead);
+    document.getElementById("repos").appendChild(div);
   }
 }
 
@@ -102,8 +118,34 @@ options =  {
 async function set_weights() {
   let response = await fetch(weight_url, options);
   let data = await response.text();
-  console.log(response);
   console.log(data);
+  var weightscsv = JSON.parse(data);
+  var temp = "";
+  var color = true;
+  for (var a of weightscsv) {
+    if (a == "|") {
+      color = false;
+      continue;
+    }
+    if(a == ',') {
+      if (temp != "") {
+        if (color) {
+          weights.push(temp);
+          temp = "";
+        }
+        else {
+          blackweights.push(temp);
+          temp = "";
+        }
+      }
+
+    }
+    else {
+      temp += a;
+    }
+  }
+  console.log(weights);
+  console.log(blackweights);
 }
 
 
