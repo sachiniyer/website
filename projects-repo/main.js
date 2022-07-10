@@ -97,7 +97,6 @@ options =  {
     "user-Agent": "sachiniyer"
   },
   method: "GET",
-  mode:'no-cors'
 };
 
 async function set_weights() {
