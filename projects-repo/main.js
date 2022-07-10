@@ -1,7 +1,7 @@
 /* jshint esversion: 8 */
 
 const url = "https://api.github.com/users/sachiniyer/repos";
-const weight_url = "https://d2gvczs6qb9wf0.cloudfront.net/weights.json";
+const weight_url = "https://d2gvczs6qb9wf0.cloudfront.net/weights.csv";
 //const weight_url = "http://127.0.0.1:8000/weights.json";
 var weights = [];
 var blackweights = [];
@@ -119,10 +119,9 @@ async function set_weights() {
   let response = await fetch(weight_url, options);
   let data = await response.text();
   console.log(data);
-  var weightscsv = JSON.parse(data);
   var temp = "";
   var color = true;
-  for (var a of weightscsv) {
+  for (var a of data) {
     if (a == "|") {
       color = false;
       continue;
