@@ -1,8 +1,8 @@
 /* jshint esversion: 8 */
 
 const url = "https://api.github.com/users/sachiniyer/repos";
-//const weight_url = "https://d2gvczs6qb9wf0.cloudfront.net/weights.json";
-const weight_url = "http://127.0.0.1:8000/weights.json";
+const weight_url = "https://d2gvczs6qb9wf0.cloudfront.net/weights.json";
+//const weight_url = "http://127.0.0.1:8000/weights.json";
 var weights;
 var reporaw;
 var reponames = [];
