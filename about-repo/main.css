@@ -1,0 +1,81 @@
+html {
+    font-size: 100%;
+    font-family:  'Open Sans', sans-serif;
+    height: 100%;
+}
+
+body {
+    background-color: #3f3f3f;
+    display: flex;
+    flex-direction: column
+}
+
+p {
+    color: #333333;
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1rem
+}
+
+a:hover {
+    color: #8ccbbe;
+}
+
+#top {
+    background-color: #333333;
+    padding-top: 1vw;
+}
+
+#title {
+    color: #333333;
+    text-align: left;
+    font-size: 2.3rem;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.line {
+    background-color: #ffffff;
+    height: 2px;
+    flex: 1 0 auto;
+}
+
+#content {
+    height: auto;
+    bottom: 0;
+    padding-bottom: 63vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+#links {
+    font-size: 1rem;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    margin-top: 2vh;
+    flex-shrink: 0;
+}
+
+#githubdiv {
+    float: left;
+    max-width: 40%;
+    margin-left: 10%;
+    align-content: left;
+    flex-shrink: 0;
+}
+
+#githubimage {
+    float: left;
+    max-width: 15%;
+    max-height: 15%;
+}
+
+#emaildiv {
+    float: right;
+    max-width: 40%;
+    margin-right: 10%;
+}
