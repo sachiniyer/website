@@ -1,7 +1,10 @@
 const canvas = document.getElementById("renderCanvas");
-var engine = null;
+var engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false });
 var scene = null;
 var sceneToRender = null;
+document.getElementById('renderCanvas').setAttribute("style", "width:100vw;height:100vh")
+engine.resize();
+
 
 BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
   if (document.getElementById("customLoadingScreenDiv")) {
@@ -27,20 +30,19 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
   document.body.appendChild(this._loadingDiv);
 };
 
-BABYLON.DefaultLoadingScreen.prototype.hideLoadingUI = function(){
+BABYLON.DefaultLoadingScreen.prototype.hideLoadingUI = function () {
   document.getElementById("customLoadingScreenDiv").style.display = "none";
 };
 var t = 0
 var s = 8
 var pos = t
 
-var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
-var createScene = function() {
+var createScene = function () {
   movementamount = 6;
-  var scene   = new BABYLON.Scene(engine);
+  var scene = new BABYLON.Scene(engine);
   scene.clearColor = new BABYLON.Color3(.216, .592, .643);
-  var scale   = 0.1, MeshWriter, text;
-  var camera  = new BABYLON.ArcRotateCamera("Camera", -Math.PI/2, Math.PI/6, 130, BABYLON.Vector3.Zero(), scene);
+  var scale = 0.1, MeshWriter, text;
+  var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI / 2, Math.PI / 6, 130, BABYLON.Vector3.Zero(), scene);
   camera.attachControl(canvas, true);
   var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
   light.intensity = 0.5;
@@ -48,7 +50,7 @@ var createScene = function() {
   d = new Date();
   t = d.toLocaleTimeString();
   console.log(d.toLocaleTimeString());
-  Writer2 = BABYLON.MeshWriter(scene, {scale:scale,defaultFont:"Arial"});
+  Writer2 = BABYLON.MeshWriter(scene, { scale: scale, defaultFont: "Arial" });
   timeposition = position;
   time = new Writer2(
     t,
@@ -73,7 +75,7 @@ var createScene = function() {
       frame: 0,
       value: val
     });
-    val = pos + linenumber*movementamount
+    val = pos + linenumber * movementamount
     textKeys.push({
       frame: 750,
       value: val
@@ -96,32 +98,32 @@ var createScene = function() {
   var textKeys2 = [];
   textKeys2.push({
     frame: 0,
-    value: timeposition/10 -movementamount*2
+    value: timeposition / 10 - movementamount * 2
   });
 
   textKeys2.push({
     frame: 750,
-    value: timeposition/10 + linenumber*movementamount - movementamount *2
+    value: timeposition / 10 + linenumber * movementamount - movementamount * 2
   });
   animtext2.setKeys(textKeys2);
   timemesh = time.getMesh();
   timemesh.animations = [];
   timemesh.animations.push(animtext2);
-  setTimeout (async () => {
+  setTimeout(async () => {
     var anim2 = scene.beginAnimation(timemesh, 0, 750, false);
-    await anims[writermeshes.length -1].waitAsync();
+    await anims[writermeshes.length - 1].waitAsync();
     update_time();
   });
   timemesh = time.getMesh();
-  timepos = timemesh.position.z - movementamount*movementamount*10 + movementamount*2;
-  function update_time () {
+  timepos = timemesh.position.z - movementamount * movementamount * 10 + movementamount * 2;
+  function update_time() {
     var handle = window.setInterval(() => {
 
       console.log(timepos);
       time.dispose();
       d = new Date();
       t = d.toLocaleTimeString();
-      Writer3= BABYLON.MeshWriter(scene, {scale:scale,defaultFont:"Arial"});
+      Writer3 = BABYLON.MeshWriter(scene, { scale: scale, defaultFont: "Arial" });
       time = new Writer3(
         t,
         {
@@ -139,27 +141,27 @@ var createScene = function() {
 
   return scene;
 
-  function write () {
-    Writer = BABYLON.MeshWriter(scene, {scale:scale,defaultFont:"Arial"});
+  function write() {
+    Writer = BABYLON.MeshWriter(scene, { scale: scale, defaultFont: "Arial" });
     done = false;
     index = 0;
     writers = [];
     var startindex = 0;
     position = 70;
     linenumber = 0;
-    while (!done){
+    while (!done) {
       space = false;
       startindex = index;
       index = index + 35;
-      linenumber ++;
+      linenumber++;
       console.log(linenumber);
       if (index >= abouttext.length) {
         index = abouttext.length - 1;
         done = true;
       }
-      else{
+      else {
         while (!space) {
-          index ++;
+          index++;
           if (abouttext[index] == ' ') {
             space = true;
           }
@@ -174,8 +176,8 @@ var createScene = function() {
           "color": "#95b4ed",
           "letter-thickness": 8,
           "position": {
-	    "x": 0,
-	    "y": 0,
+            "x": 0,
+            "y": 0,
             "z": position
           }
         }
@@ -187,20 +189,8 @@ var createScene = function() {
     for (i = 0; i < writers.length; i++) {
       writermeshes.push(writers[i].getMesh());
     }
-    // for (i = 0; i < writermeshes.length; i++) {
-    //   writermeshes[i].position = new BABYLON.Vector3(1, 4, 0);
-    // }
-    // console.log(writermeshes)
-    // finaltext = BABYLON.Mesh.MergeMeshes(writermeshes, true, true, undefined, false, true);
-    // finaltext = BABYLON.Mesh.MergeMeshes(writermeshes, true, true);
   }
 
-  engine.runRenderLoop(function () {
-    scene.render();
-  });
-  window.addEventListener("resize", function () {
-    engine.resize();
-  });
 };
 
 fetch('https://sachiniyer.github.io/mywebsitetext/about.txt')
@@ -208,26 +198,15 @@ fetch('https://sachiniyer.github.io/mywebsitetext/about.txt')
   .then(function (data) {
     abouttext = data;
   })
-  .then (function (){
-    initFunction = async function() {
-      var asyncEngineCreation = async function() {
-        try {
-          return createDefaultEngine();
-        } catch(e) {
-          console.log("the available createEngine function failed. Creating the default engine instead");
-          return createDefaultEngine();
-        }
-      };
-
-      engine = await asyncEngineCreation(); if (!engine) throw 'engine should not be null.'; scene = createScene();};
-    initFunction().then(() => {
-      engine.runRenderLoop(function () {
-        scene.render();
-      });
+  .then(function () {
+    scene = createScene();
+    engine.runRenderLoop(function () {
+      scene.render();
     });
     // Resize
     window.addEventListener("resize", function () {
+      console.log("here")
+      document.getElementById('renderCanvas').setAttribute("style", "width:100vw;height:100vh")
       engine.resize();
     });
-
   });
