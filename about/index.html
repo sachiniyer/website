@@ -4,22 +4,6 @@
   <meta http-equiv="Content-Type" content=
   "text/html; charset=utf-8" />
   <title>Sachin Iyer About</title>
-  <style>
-  <![CDATA[
-          html, body {
-              overflow: hidden;
-              width: 100%;
-              height: 100%;
-              margin: 0;
-              padding: 0;
-          }
-          #renderCanvas {
-              width: 100%;
-              height: 100%;
-              touch-action: none;
-          }
-  ]]>
-  </style>
   <link rel="apple-touch-icon" sizes="57x57" href=
   "https://sachiniyer.com/about/apple-icon-57x57.png" />
   <link rel="apple-touch-icon" sizes="60x60" href=
@@ -92,8 +76,9 @@
   </style>
 </head>
 <body>
-  <canvas id="renderCanvas" touch-action="none" tabindex="1" style=
-  "touch-action: none"></canvas>
-  <script src="https://sachiniyer.com/about/main.js"></script>
+  <canvas id="renderCanvas" width="100vw" height="100vh"
+  touch-action="none" tabindex="1" style="touch-action: none">
+  </canvas>
+  <script src="./main.js"></script>
 </body>
 </html>
