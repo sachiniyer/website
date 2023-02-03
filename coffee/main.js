@@ -32,7 +32,7 @@ function formsubmit() {
     redirect: 'follow'
   };
 
-  fetch("https://sachiniyer.com/coffee", requestOptions)
+  fetch("https://api.sachiniyer.com/coffee", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
