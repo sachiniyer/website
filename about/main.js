@@ -193,7 +193,7 @@ var createScene = function () {
 
 };
 
-fetch('https://sachiniyer.github.io/mywebsitetext/about.txt')
+fetch('https://sachiniyer.com/about/about.txt')
   .then(response => response.text())
   .then(function (data) {
     abouttext = data;
