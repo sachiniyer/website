@@ -83,7 +83,9 @@ BABYLON.DefaultLoadingScreen.prototype.hideLoadingUI = function(){
 }
 
 const canvas = document.getElementById("renderCanvas")
+document.getElementById('renderCanvas').setAttribute("style", "width:100vw;height:100vh")
 const engine = new BABYLON.Engine(canvas, true)
+document.getElementById('renderCanvas').setAttribute("style", "width:100vw;height:100vh")
 const createScene =  function () {
   //loading
   engine.displayLoadingUI()
