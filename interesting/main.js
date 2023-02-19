@@ -1,6 +1,6 @@
 var playing = false
 var audionum = Math.floor(Math.random() * 10)
-var audiostring = "https://d1tn30suk9fms8.cloudfront.net/" + audionum.toString() + ".mp3"
+var audiostring = "https://sachiniyer.com/interesting/" + audionum.toString() + ".mp3"
 var lonval = -74.00597
 var latval = 40.71427
 var audio = new Audio(audiostring)
@@ -115,7 +115,7 @@ const createScene =  function () {
   var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:1000}, scene)
   var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene)
   skyboxMaterial.backFaceCulling = false
-  skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://d1tn30suk9fms8.cloudfront.net/skybox", scene)
+  skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://sachiniyer.com/interesting/skybox", scene)
   skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE
   skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0)
   skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
@@ -137,7 +137,7 @@ const createScene =  function () {
   plane1.position.z =-buttonscaling
   var advancedTexture1 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane1)
 
-  var button1 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but1", "About", "https://d1tn30suk9fms8.cloudfront.net/about.jpeg")
+  var button1 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but1", "About", "https://sachiniyer.com/interesting/about.jpeg")
   button1.width = buttonwidth
   button1.height = buttonwidth
   button1.color = "white"
@@ -156,7 +156,7 @@ const createScene =  function () {
   plane2.rotation.z = Math.PI
   var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane2)
 
-  var button2 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but2", "", "https://d1tn30suk9fms8.cloudfront.net/github.png")
+  var button2 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but2", "", "https://sachiniyer.com/interesting/github.png")
   button2.width = buttonwidth
   button2.height = buttonwidth
   button2.color = "white"
@@ -176,7 +176,7 @@ const createScene =  function () {
   plane3.rotation.z = Math.PI
   var advancedTexture3 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane3)
 
-  var button3 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but3", "", "https://d1tn30suk9fms8.cloudfront.net/mail.jpeg")
+  var button3 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but3", "", "https://sachiniyer.com/interesting/mail.jpeg")
   button3.width = buttonwidth
   button3.height = buttonwidth
   button3.color = "white"
@@ -194,7 +194,7 @@ const createScene =  function () {
   plane4.rotation.y = Math.PI/2
   var advancedTexture4 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane4)
 
-  var button4 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but4", "", "https://d1tn30suk9fms8.cloudfront.net/music.png")
+  var button4 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but4", "", "https://sachiniyer.com/interesting/music.png")
   button4.width = buttonwidth
   button4.height = buttonwidth
   button4.color = "black"
@@ -211,7 +211,7 @@ const createScene =  function () {
   plane5.rotation.x = Math.PI/2
   var advancedTexture5 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane5)
 
-  var button5 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but5", "", "https://d1tn30suk9fms8.cloudfront.net/sachiniyer.jpg")
+  var button5 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but5", "", "https://sachiniyer.com/interesting/sachiniyer.jpg")
   button5.width = buttonwidth
   button5.height = buttonwidth
   button5.color = "white"
@@ -230,7 +230,7 @@ const createScene =  function () {
   plane6.rotation.z = Math.PI
   var advancedTexture6 = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(plane6)
 
-  var button6 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but6", "", "https://d1tn30suk9fms8.cloudfront.net/secret.jpeg")
+  var button6 = BABYLON.GUI.Button.CreateImageWithCenterTextButton("but6", "", "https://sachiniyer.com/interesting/secret.jpeg")
   button6.width = buttonwidth
   button6.height = buttonwidth
   button6.color = "white"
@@ -244,7 +244,7 @@ const createScene =  function () {
 
   var assetsManager = new BABYLON.AssetsManager(scene)
 
-  var meshTask = assetsManager.addMeshTask("tesla task", "", "", "https://d1tn30suk9fms8.cloudfront.net/tesla.glb")
+  var meshTask = assetsManager.addMeshTask("tesla task", "", "", "https://sachiniyer.com/interesting/tesla.glb")
 
 
   meshTask.onSuccess = function (task) {
