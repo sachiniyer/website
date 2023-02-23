@@ -1,7 +1,7 @@
-let geturl = "https://sachiniyer.com/ec2-dash/get"
-let ipurl = "https://sachiniyer.com/ec2-dash/ip"
-let starturl = "https://sachiniyer.com/ec2-dash/start/?InstanceId="
-let stopurl = "https://sachiniyer.com/ec2-dash/stop/?InstanceId="
+let geturl = "https://api.sachiniyer.com/ec2-dash/get"
+let ipurl = "https://api.sachiniyer.com/ec2-dash/ip"
+let starturl = "https://api.sachiniyer.com/ec2-dash/start/?InstanceId="
+let stopurl = "https://api.sachiniyer.com/ec2-dash/stop/?InstanceId="
 
 // let geturl = "https://localhost:8010/ec2-dash/get"
 // let ipurl = "https://localhost:8010/ec2-dash/ip"
@@ -13,12 +13,12 @@ let stopurl = "https://sachiniyer.com/ec2-dash/stop/?InstanceId="
 
 function processinstances(instances) {
 	var instanceid = document.getElementById('instances')
-	for(var i in instances) {
+	for (var i in instances) {
 		var button = document.createElement("button")
 		button.classList.add("ec2but")
 		button.innerHTML = "Start: " + instances[i]
 		instanceid.appendChild(button)
-		button.addEventListener("click", function() {
+		button.addEventListener("click", function () {
 			let url = starturl + i
 			fetch(url)
 				.then((response) => {
@@ -35,7 +35,7 @@ function processinstances(instances) {
 		button2.classList.add("ec2but")
 		button2.innerHTML = "Stop: " + instances[i]
 		instanceid.appendChild(button2)
-		button2.addEventListener("click", function() {
+		button2.addEventListener("click", function () {
 			let url = stopurl + i
 			fetch(url)
 				.then((response) => {
@@ -49,7 +49,7 @@ function processinstances(instances) {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", function(event){
+document.addEventListener("DOMContentLoaded", function (event) {
 	fetch(geturl)
 		.then(response => {
 			console.log(response)
