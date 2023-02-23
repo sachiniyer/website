@@ -1,54 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
+<head>
+    <meta charset="UTF-8">
     <title>Sachin Iyer</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://d3ku2iufc82wp6.cloudfront.net/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="https://d3ku2iufc82wp6.cloudfront.net/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://d3ku2iufc82wp6.cloudfront.net/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://d3ku2iufc82wp6.cloudfront.net/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://d3ku2iufc82wp6.cloudfront.net/favicon-16x16.png">
-    <link rel="manifest" href="https://d2vus8h7jhfhm.cloudfront.net/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="https://d3ku2iufc82wp6.cloudfront.net/ms-icon-144x144.png">
+    <link rel="manifest" href=
+    "https://sachiniyer.com/ec2/manifest.json">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
-		<link rel="stylesheet" href="https://daovnw9dqchgh.cloudfront.net/main.css">
-		<script src="https://daovnw9dqchgh.cloudfront.net/main.js"></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href=
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity=
+    "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+    <script src=
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity=
+    "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+    <script src=
+    "https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
+    <link rel="stylesheet" href=
+    "https://sachiniyer.com/ec2/main.css">
+    <script src="https://sachiniyer.com/ec2/main.js"></script>
+</head>
+<body>
     <div class="jumbotron text-center title">
-      <h class="display-4">ec2 dashboard</h>
-			<p>This is a public interface to bring up and down long running ec2 instances that I want other people to be able to access. Don't be a dick and start stuff you shouldn't (I leave things passwordless cause otherwise it's too much work). Also don't forget to turn stuff off. </p>
+        <h1 class="display-4">ec2 dashboard</h1>
+        <p>This is a public interface to bring up and down long
+        running ec2 instances that I want other people to be able
+        to access. Don't be a dick and start stuff you shouldn't (I
+        leave things passwordless cause otherwise it's too much
+        work). Also don't forget to turn stuff off.</p>
     </div>
-		<div><h1>TURN IT THE FUCK OFF WHEN DONE</h1></div>
-		<div id="instances"></div>
+    <div>
+        <h1>TURN IT OFF WHEN DONE</h1>
+    </div>
+    <div id="instances"></div>
     <div class="fixed-bottom container" id="footer">
-      <div class="row row-no-gutters pb-3" role="group">
-				<div class="col-xs-6 col-md-3 p-1">
-					<a href="https://github.com/sachiniyer" type="button" class="btn btn-secondary btn-large btn-block mybutton">Github</a>
-				</div>
-				<div class="col-xs-6 col-md-3 p-1">
-					<a href="https://sachiniyer.com" type="button" class="btn btn-secondary btn-large btn-block mybutton">Home</a>
-				</div>
-				<div class="col-xs-6 col-md-3 p-1">
-					<a href="https://sachiniyer.com/interesting" type="button" class="btn btn-secondary btn-large btn-block mybutton">Fun Experience</a>
-				</div>
-				<div class="col-xs-6 col-md-3 p-1">
-					<a href="mailto:sachinjiyer@gmail.com" type="button" class="btn btn-secondary btn-large btn-block mybutton">Email</a>
-				</div>
-      </div>
+        <div class="row row-no-gutters pb-3" role="group">
+            <div class="col-xs-6 col-md-3 p-1">
+                <a href="https://github.com/sachiniyer" type=
+                "button" class=
+                "btn btn-secondary btn-large btn-block mybutton">Github</a>
+            </div>
+            <div class="col-xs-6 col-md-3 p-1">
+                <a href="https://sachiniyer.com" type="button"
+                class=
+                "btn btn-secondary btn-large btn-block mybutton">Home</a>
+            </div>
+            <div class="col-xs-6 col-md-3 p-1">
+                <a href="https://sachiniyer.com/interesting" type=
+                "button" class=
+                "btn btn-secondary btn-large btn-block mybutton">Fun
+                Experience</a>
+            </div>
+            <div class="col-xs-6 col-md-3 p-1">
+                <a href="mailto:sachinjiyer@gmail.com" type=
+                "button" class=
+                "btn btn-secondary btn-large btn-block mybutton">Email</a>
+            </div>
+        </div>
     </div>
-		<div class="spacer"></div>
-  </body>
+    <div class="spacer"></div>
+</body>
 </html>
