@@ -1,8 +1,7 @@
 /* jshint esversion: 8 */
 
 const url = "https://api.github.com/users/sachiniyer/repos";
-const weight_url = "https://sachiniyer.com/projects/weights.csv";
-//const weight_url = "http://127.0.0.1:8000/weights.json";
+const weight_url = "./weights.csv";
 var weights = [];
 var blackweights = [];
 var reporaw;
@@ -15,11 +14,11 @@ const classMap = {
 };
 
 const bindings = Object.keys(classMap)
-                       .map(key => ({
-                         type: 'output',
-                         regex: new RegExp(`<${key}(.*)>`, 'g'),
-                         replace: `<${key} class="${classMap[key]}" $1>`
-                       }));
+  .map(key => ({
+    type: 'output',
+    regex: new RegExp(`<${key}(.*)>`, 'g'),
+    replace: `<${key} class="${classMap[key]}" $1>`
+  }));
 const conv = new showdown.Converter({
   extensions: [...bindings]
 });
@@ -31,7 +30,7 @@ conv.setFlavor('github');
 // then append head and body to dict that has weights.
 
 
-async function processrepos(repos){
+async function processrepos(repos) {
 
   var elements = {};
   for (let i = 0; i < repos.length; i++) {
@@ -51,9 +50,11 @@ async function processrepos(repos){
       })
       .then((data) => {
         if (flag) {
-          elements[name] = {href: "https://github.com/sachiniyer" + name,
-                            title: name,
-                            body: data};
+          elements[name] = {
+            href: "https://github.com/sachiniyer" + name,
+            title: name,
+            body: data
+          };
         }
       })
       .catch((err) => {
@@ -68,9 +69,11 @@ async function processrepos(repos){
           return response.text();
         })
         .then((data) => {
-          elements[name] = {href: "https://github.com/sachiniyer" + name,
-                            title: name,
-                            body: data};
+          elements[name] = {
+            href: "https://github.com/sachiniyer" + name,
+            title: name,
+            body: data
+          };
         })
         .catch((err) => {
           console.log("README.md not found for: " + name);
@@ -108,17 +111,13 @@ async function processrepos(repos){
   }
 }
 
-options =  {
-  headers: {
-    "user-Agent": "sachiniyer"
-  },
+options = {
   method: "GET",
 };
 
 async function set_weights() {
   let response = await fetch(weight_url, options);
   let data = await response.text();
-  console.log(data);
   var temp = "";
   var color = true;
   for (var a of data) {
@@ -126,7 +125,7 @@ async function set_weights() {
       color = false;
       continue;
     }
-    if(a == ',') {
+    if (a == ',') {
       if (temp != "") {
         if (color) {
           weights.push(temp);
