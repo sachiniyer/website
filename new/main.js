@@ -31,6 +31,9 @@ function resizeColumnLists() {
     if (columnCount < 1) {
       columnCount = 1;
     }
+    if (columnCount > 3) {
+      columnCount = 3;
+    }
     columnList.style.columnCount = columnCount;
   }
 }

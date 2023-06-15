@@ -1,4 +1,14 @@
 /* Version: 1.0 */
+/* font stuff */
+@font-face {
+  font-family: 'TitleFont';
+  src: url('./Corben-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RegularFont';
+  src: url('./Hack-Regular.ttf') format('truetype');
+}
 
 /* General Colors */
 body {
@@ -32,7 +42,7 @@ a:active {
     background-color: #383838;
     color: #7cb8bb;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'TitleFont', sans-serif;
     padding: 0.1em;
 }
 
@@ -57,9 +67,8 @@ a:active {
     padding-left: 3em;
     padding-right: 3em;
     text-align: center;
+    font-family: 'RegularFont', sans-serif;
 }
-
-
 
 
 .main-text {
