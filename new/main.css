@@ -1,0 +1,102 @@
+/* Version: 1.0 */
+
+/* General Colors */
+body {
+    background-color:  #3f3f3f;
+    position: absolute;
+}
+
+p {
+    color: #7cb8bb;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+/* Titles */
+.title {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.1em;
+}
+
+
+/* Image Stuff */
+.responsive-img-div {
+    height: auto;
+    padding-top: 2em;
+}
+
+.responsive-img {
+    width: 20em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Main Text */
+.responsive-text {
+    color: #7cb8bb;
+    padding-left: 3em;
+    padding-right: 3em;
+    text-align: center;
+}
+
+
+
+
+.main-text {
+    font-size: 2em;
+}
+
+.general-text {
+    font-size: 1.75em;
+}
+
+.general-text:hover {
+    color: var(--hover-color);
+}
+
+
+.list {
+    list-style-type: none;
+    column-gap: 1em;
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .responsive-img {
+        width: 30em;
+        height: auto;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+   .responsive-img {
+        width: 15em;
+        height: auto;
+    }
+
+}
+
