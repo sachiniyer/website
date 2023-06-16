@@ -1,0 +1,3 @@
+* TODO Make sure that element sizes are always all the same
+* TODO Do site verification before display -> need to enable cors
+* TODO Verify scaling one last time
