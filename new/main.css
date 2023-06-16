@@ -13,6 +13,7 @@
 /* General Colors */
 body {
     background-color:  #3f3f3f;
+    padding: 0;
 }
 
 p {
@@ -36,15 +37,34 @@ a:active {
   outline: none;
 }
 
+
 /* Titles */
+/* create seperation between each one of the title elements */
+.bigtitle {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 1em;
+
+}
 .title {
     background-color: #383838;
     color: #7cb8bb;
     text-align: center;
     font-family: 'TitleFont', sans-serif;
-    padding: 0.1em;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Spacer */
+.spacer {
+    height: 1em;
+}
 
 /* Image Stuff */
 .responsive-img-div {

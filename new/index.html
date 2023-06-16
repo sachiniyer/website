@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="title">
+    <div class="bigtitle">
         <h1>Sachin Iyer</h1>
     </div>
     <div class="responsive-img-div">
@@ -22,20 +22,28 @@
             and am either in Brooklyn or San Jose. I like computers and jazz.</p>
     </div>
     <div>
-        <div class="title">
-            <h2>Other Places on my Website</h2>
+        <div class="title" onclick="toggleDisplay('inner')">
+            <h2 id="innerHeadingLeft" class="leftArrow">⮩</h2>
+            <h2 id="innerHeading" class="inline"> Other Places on my Website </h2>
+            <h2 id="innerHeadingRight" class="rightArrow">⮨</h2>
         </div>
-        <ul id="innerElements" class="list">
+        <ul id="innerElements" class="list" style="display: none;">
         </ul>
-        <div class="title">
-            <h2>Other Places on the Web</h2>
+        <div class="spacer"></div>
+        <div class="title" onclick="toggleDisplay('outer')">
+            <h2 id="outerHeadingLeft" class="leftArrow">⮩</h2>
+            <h2 id="outerHeading" class="inline"> Other Places on the Web </h2>
+            <h2 id="outerHeadingRight" class="rightArrow">⮨</h2>
         </div>
-        <ul id="outerElements" class="list">
+        <ul id="outerElements" class="list" style="display: none;">
         </ul>
-        <div class="title">
-            <h2>Other Apps hosted on my Website</h2>
+        <div class="spacer"></div>
+        <div class="title" onclick="toggleDisplay('sub')">
+            <h2 id="subHeadingLeft" class="leftArrow">⮩</h2>
+            <h2 id="subHeading" class="inline"> Other Apps hosted on my Website </h2>
+            <h2 id="subHeadingRight" class="rightArrow">⮨</h2>
         </div>
-        <ul id="subElements" class="list">
+        <ul id="subElements" class="list" style="display: none;">
         </ul>
     </div>
 </body>

@@ -148,7 +148,6 @@ function createSubElements(elems) {
     // testSite(url)
     //   .then(function (f) {
     //     if (f) {
-    console.log(url + " is up");
     var li = document.createElement('li');
     var a = document.createElement('a');
     var p = document.createElement('p');
@@ -170,6 +169,22 @@ function createSubElements(elems) {
   }
 }
 
+function toggleDisplay(e) {
+  let elem = document.getElementById(e + "Elements");
+  let right = document.getElementById(e + "HeadingRight")
+  let left = document.getElementById(e + "HeadingLeft")
+  if (elem.style.display === 'none') {
+    elem.style.display = 'block';
+    left.innerHTML = '⮮';
+    right.innerHTML = '⮯';
+  } else {
+    elem.style.display = 'none';
+    left.innerHTML = '⮩';
+    right.innerHTML = '⮨';
+  }
+
+}
+
 function createElements() {
   createInnerElements();
   createOuterElements();
@@ -180,3 +195,4 @@ function createElements() {
 }
 
 window.addEventListener('load', createElements);
+
