@@ -145,28 +145,28 @@ function createSubElements(elems) {
 
   for (var key of elems) {
     let url = 'https://' + key;
-    testSite(url)
-      .then(function (f) {
-        if (f) {
-          console.log(url + " is up");
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          var p = document.createElement('p');
+    // testSite(url)
+    //   .then(function (f) {
+    //     if (f) {
+    console.log(url + " is up");
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    var p = document.createElement('p');
 
-          p.style.setProperty('--hover-color', getRandomColor());
-          li.appendChild(a);
-          a.appendChild(p);
+    p.style.setProperty('--hover-color', getRandomColor());
+    li.appendChild(a);
+    a.appendChild(p);
 
-          a.setAttribute('class', 'btn');
-          a.setAttribute('href', url);
-          a.setAttribute('type', 'button');
+    a.setAttribute('class', 'btn');
+    a.setAttribute('href', url);
+    a.setAttribute('type', 'button');
 
-          p.setAttribute('class', 'general-text responsive-text');
-          p.innerHTML = key;
+    p.setAttribute('class', 'general-text responsive-text');
+    p.innerHTML = key;
 
-          subElements.appendChild(li);
-        }
-      });
+    subElements.appendChild(li);
+    //   }
+    // });
   }
 }
 
