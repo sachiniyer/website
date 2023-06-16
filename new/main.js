@@ -175,12 +175,12 @@ function toggleDisplay(e) {
   let left = document.getElementById(e + "HeadingLeft")
   if (elem.style.display === 'none') {
     elem.style.display = 'block';
-    left.innerHTML = '⮮';
-    right.innerHTML = '⮯';
+    left.innerHTML = '↡';
+    right.innerHTML = '↡';
   } else {
     elem.style.display = 'none';
-    left.innerHTML = '⮩';
-    right.innerHTML = '⮨';
+    left.innerHTML = '↠';
+    right.innerHTML = '↞';
   }
 
 }
