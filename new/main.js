@@ -23,23 +23,16 @@ function getRandomColor() {
 
 function resizeColumnLists() {
   var columnLists = document.getElementsByClassName('list');
-
+  var widthOutput = document.documentElement.clientWidth;
+  var columnCount = Math.floor(widthOutput / 600);
   for (var i = 0; i < columnLists.length; i++) {
-    var columnList = columnLists[i];
-    var listWidth = columnList.offsetWidth;
-    var columnCount = Math.floor(listWidth / 600);
-    if (columnCount < 1) {
-      columnCount = 1;
-    }
-    if (columnCount > 3) {
-      columnCount = 3;
-    }
-    columnList.style.columnCount = columnCount;
+    columnLists[i].style.columnCount = columnCount;
   }
 }
 
 window.addEventListener('load', resizeColumnLists);
 window.addEventListener('resize', resizeColumnLists);
+window.addEventListener('orientationchange', resizeColumnLists);
 
 
 
@@ -139,6 +132,7 @@ function createSubElements(elems) {
     var a = document.createElement('a');
     var p = document.createElement('p');
 
+    p.style.setProperty('--hover-color', getRandomColor());
     li.appendChild(a);
     a.appendChild(p);
 
@@ -147,7 +141,6 @@ function createSubElements(elems) {
     a.setAttribute('type', 'button');
 
     p.setAttribute('class', 'general-text responsive-text');
-    p.style.setProperty('--hover-color', getRandomColor());
     p.innerHTML = key;
 
     subElements.appendChild(li);
