@@ -85,9 +85,9 @@ function createOuterElements() {
   }
 }
 
+
 function findSubElements() {
-  //make a request to https://raw.githubusercontent.com/sachiniyer/cheap_portable_k3s/main/nginx.conf and get it's contentf
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, _) {
     let request = new XMLHttpRequest();
     request.open('GET', 'https://raw.githubusercontent.com/sachiniyer/cheap_portable_k3s/main/nginx.conf', true);
     request.send(null);
@@ -97,7 +97,6 @@ function findSubElements() {
         if (type.indexOf("text") !== 1) {
           let sub_web = request.responseText;
           sub_web = sub_web.split("\n").map(function (item) { return item.trim() });
-          // search the text for a line that starts with     "map $ssl_preread_server_name $name {", split all the lines that come after it untiil you have a line that has }
           for (let i = 0; i < sub_web.length; i++) {
             if (sub_web[i].includes("map $ssl_preread_server_name $name {")) {
               let sub_web_new = sub_web.slice(i + 1);
@@ -105,7 +104,6 @@ function findSubElements() {
                 if (sub_web_new[j].includes("}")) {
                   let sub_web_final = sub_web_new.slice(0, j);
                   sub_web_final = sub_web_final.map(function (item) { return item.split(" ")[0] });
-                  // exclude any elements from sub_web_exclude in _sub_web_final
                   for (let k = 0; k < sub_web_exclude.length; k++) {
                     for (let l = 0; l < sub_web_final.length; l++) {
                       if (sub_web_final[l] == sub_web_exclude[k]) {
@@ -124,26 +122,51 @@ function findSubElements() {
   });
 }
 
+function testSite(url) {
+  return new Promise(function (resolve, _) {
+    let request = new XMLHttpRequest();
+    // allow cors
+    request.withCredentials = true;
+    request.open('GET', url, true);
+    request.send(null);
+    request.onreadystatechange = function () {
+      if (request.readyState === 4 && request.status === 200) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    }
+  });
+}
+
+
 function createSubElements(elems) {
   var subElements = document.getElementById('subElements');
 
   for (var key of elems) {
-    var li = document.createElement('li');
-    var a = document.createElement('a');
-    var p = document.createElement('p');
+    let url = 'https://' + key;
+    testSite(url)
+      .then(function (f) {
+        if (f) {
+          console.log(url + " is up");
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var p = document.createElement('p');
 
-    p.style.setProperty('--hover-color', getRandomColor());
-    li.appendChild(a);
-    a.appendChild(p);
+          p.style.setProperty('--hover-color', getRandomColor());
+          li.appendChild(a);
+          a.appendChild(p);
 
-    a.setAttribute('class', 'btn');
-    a.setAttribute('href', 'https://' + key);
-    a.setAttribute('type', 'button');
+          a.setAttribute('class', 'btn');
+          a.setAttribute('href', url);
+          a.setAttribute('type', 'button');
 
-    p.setAttribute('class', 'general-text responsive-text');
-    p.innerHTML = key;
+          p.setAttribute('class', 'general-text responsive-text');
+          p.innerHTML = key;
 
-    subElements.appendChild(li);
+          subElements.appendChild(li);
+        }
+      });
   }
 }
 
