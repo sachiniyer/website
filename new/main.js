@@ -89,33 +89,15 @@ function createOuterElements() {
 function findSubElements() {
   return new Promise(function (resolve, _) {
     let request = new XMLHttpRequest();
-    request.open('GET', 'https://raw.githubusercontent.com/sachiniyer/cheap_portable_k3s/main/nginx.conf', true);
+    request.open('GET', 'https://status.sachiniyer.com', true);
     request.send(null);
     request.onreadystatechange = function () {
       if (request.readyState === 4 && request.status === 200) {
         let type = request.getResponseHeader('Content-Type');
         if (type.indexOf("text") !== 1) {
           let sub_web = request.responseText;
-          sub_web = sub_web.split("\n").map(function (item) { return item.trim() });
-          for (let i = 0; i < sub_web.length; i++) {
-            if (sub_web[i].includes("map $ssl_preread_server_name $name {")) {
-              let sub_web_new = sub_web.slice(i + 1);
-              for (let j = 0; j < sub_web_new.length; j++) {
-                if (sub_web_new[j].includes("}")) {
-                  let sub_web_final = sub_web_new.slice(0, j);
-                  sub_web_final = sub_web_final.map(function (item) { return item.split(" ")[0] });
-                  for (let k = 0; k < sub_web_exclude.length; k++) {
-                    for (let l = 0; l < sub_web_final.length; l++) {
-                      if (sub_web_final[l] == sub_web_exclude[k]) {
-                        sub_web_final.splice(l, 1);
-                      }
-                    }
-                  }
-                  resolve(sub_web_final);
-                }
-              }
-            }
-          }
+          let sub_web_json = JSON.parse(sub_web);
+          resolve(Object.keys(sub_web_json))
         }
       }
     }
