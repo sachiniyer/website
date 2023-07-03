@@ -1,17 +1,4 @@
-let outer_web = {
-  "Github": "https://github.com/sachiniyer",
-  "Linkedin": "https://www.linkedin.com/in/sachin-iyer-8b2735217/",
-  "Mastodon": "https://mastodon.social/@ripe_mango",
-  "Lemmy": "https://lemmy.world/u/ripe_banana"
-};
-let inner_web = {
-  "Resume": "/resume",
-  "Email": "/email",
-  "Projects": "/projects",
-  "About": "/about",
-  "Apps": "/apps"
-};
-
+let sub_web_exclude = ["tunnel.sachiniyer.com", "sachiniyer.com"];
 
 function getRandomColor() {
   var colors = ['#7F9F7F', '#F0DFAF', '#DC8CC3'];
@@ -30,8 +17,7 @@ function resizeColumnLists() {
 }
 
 function createElements() {
-  createInnerElements();
-  createOuterElements();
+  createSubElements();
 }
 
 function createElement(elem, key, value) {
@@ -56,23 +42,14 @@ function createElement(elem, key, value) {
 }
 
 
-function createInnerElements() {
-  var innerElements = document.getElementById('innerElements');
-
-  for (var key in inner_web) {
-    var value = inner_web[key];
-    createElement(innerElements, key, value)
-  }
+function createSubElements() {
+  var subElements = document.getElementById('subElements');
+  let socket = new WebSocket("wss://status.sachiniyer.com/ws");
+  socket.onmessage = function (event) {
+    createElement(subElements, event.data.substring(8), event.data)
+  };
 }
 
-function createOuterElements() {
-  var outerElements = document.getElementById('outerElements');
-
-  for (var key in outer_web) {
-    var value = outer_web[key];
-    createElement(outerElements, key, value)
-  }
-}
 
 window.addEventListener('load', resizeColumnLists);
 window.addEventListener('resize', resizeColumnLists);

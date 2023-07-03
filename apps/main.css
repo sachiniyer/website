@@ -1,0 +1,86 @@
+/* Version: 1.0 */
+/* font stuff */
+@font-face {
+  font-family: 'TitleFont';
+  src: url('../fonts/title.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RegularFont';
+  src: url('../fonts/main.ttf') format('truetype');
+}
+
+/* General Colors */
+body {
+    background-color:  #3f3f3f;
+    padding: 0;
+}
+
+p {
+    color: #7cb8bb;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #7cb8bb;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+
+/* Titles */
+.bigtitle {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 1em;
+
+}
+
+/* Spacer */
+.spacer {
+    height: 1em;
+}
+
+
+/* Main Text */
+.responsive-text {
+    color: #7cb8bb;
+    padding-left: 3em;
+    padding-right: 3em;
+    text-align: center;
+    font-family: 'RegularFont', sans-serif;
+}
+
+
+.main-text {
+    font-size: 2em;
+    font-family: 'RegularFont', sans-serif;
+    text-align: center;
+}
+
+.general-text {
+    font-size: 1.75em;
+}
+
+.general-text:hover {
+    color: var(--hover-color);
+}
+
+
+.list {
+    list-style-type: none;
+    column-gap: 1em;
+}
