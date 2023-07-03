@@ -2,12 +2,12 @@
 /* font stuff */
 @font-face {
   font-family: 'TitleFont';
-  src: url('./TurretRoad-ExtraBold.ttf') format('truetype');
+  src: url('../fonts/title.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'RegularFont';
-  src: url('./Hack-Regular.ttf') format('truetype');
+  src: url('../fonts/main.ttf') format('truetype');
 }
 
 /* General Colors */

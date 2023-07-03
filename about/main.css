@@ -2,50 +2,65 @@
 /* font stuff */
 @font-face {
   font-family: 'TitleFont';
-  src: url('../fonts/TurretRoad-ExtraBold.ttf') format('truetype');
+  src: url('../fonts/title.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'RegularFont';
-  src: url('../fonts/Hack-Regular.ttf') format('truetype');
+  src: url('../fonts/main.ttf') format('truetype');
 }
 
 /* General Colors */
 body {
     background-color:  #3f3f3f;
-    padding: 0;
+    color: #7cb8bb;
+    text-align: center;
 }
 
 p {
-    color: #7cb8bb;
-}
-
-h1 {
-    font-size: 5em;
+    font-size: 1.25em;
 }
 
 h2 {
     font-size: 2em;
 }
 
-a {
-    text-decoration: none;
+li {
+    list-style-type: none;
+}
+a:link {
+  color: #F0DFAF;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-a:focus,
+a:visited {
+  color: #7F9F7F;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #DC8CC3;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 a:active {
-  outline: none;
+  color: #DC8CC3;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 
 /* Titles */
-/* create seperation between each one of the title elements */
 .bigtitle {
     background-color: #383838;
     color: #7cb8bb;
     text-align: center;
     font-family: 'TitleFont', sans-serif;
     padding: 1em;
+    font-size: 2em;
 
 }
 .title {
@@ -61,165 +76,21 @@ a:active {
     align-items: center;
 }
 
-/* Spacer */
-.spacer {
-    height: 1em;
-}
-
-/* Image Stuff */
-.responsive-img-div {
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.responsive-img {
-    width: 15em;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.column {
-    height: 20em;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.column-left{
-    float: left;
-    width: 40%;
-    order: 1;
-}
-
-.column-right {
-    float: right;
-    width: 40%;
-    order: 3;
-}
-/* Make sure that center column is in between left and right, even if the element comes before column-left */
-.center-column {
-    float: left;
-    width: 20%;
-    order: 2;
-}
-
-.row {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 3em;
-    padding-right: 3em;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Main Text */
-.responsive-text {
-    color: #7cb8bb;
-    padding-left: 3em;
-    padding-right: 3em;
-    text-align: center;
-    font-family: 'RegularFont', sans-serif;
-}
-
-
 .main-text {
-    font-size: 2em;
+    width: 60%;
+    margin: auto;
+    padding: 1em;
+
 }
-
-.general-text {
-    font-size: 1.75em;
-}
-
-.general-text:hover {
-    color: var(--hover-color);
-}
-
-
-.list {
-    list-style-type: none;
-    column-gap: 1em;
-}
-
-
 
 @media screen and (max-width: 1000px) {
-    .responsive-img {
-        width: 30em;
+    .main-text {
+        width: 85%;
     }
-    .center-column {
-        flex: 100%;
-        width: 100%;
-        order: 1;
-    }
-    .column-left {
-        float: left;
-        flex-direction: row;
-        order: 2;
-    }
-    .column-right {
-        float: right;
-        flex-direction: row;
-        order: 3;
-    }
-
-    .column {
-        width: 50%;
-    }
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 4em;
-    }
-
 }
 
 @media screen and (max-width: 600px) {
-   .responsive-img {
-        width: 15em;
-        height: auto;
-    }
-    .center-column {
-        flex: 100%;
-        width: 100%;
-        order: 1;
-    }
-    .column-left {
-        float: left;
-        flex-direction: row;
-        order: 2;
-    }
-    .column-right {
-        float: right;
-        flex-direction: row;
-        order: 3;
-    }
-
-    .column {
-        width: 100%;
-        height: auto;
-    }
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 0em;
-    }
-    .responsive-text {
-        color: #7cb8bb;
-        padding-left: 0em;
-        padding-right: 0em;
-        text-align: center;
-        font-family: 'RegularFont', sans-serif;
-        font-size: 1em;
+    .main-text {
+        width: 95%;
     }
 }

@@ -1,1 +1,0 @@
-My name is Sachin. My current interests are ever changing, but currently they include AWS, Web3.0, parallel computing, and cryptography. The technical projects that sink most of my time right now are my emacs configuration, corelink (NYU's high speed research network), and random rabbit holes. In another life I played a lot of jazz.
