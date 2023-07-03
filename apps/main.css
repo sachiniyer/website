@@ -33,10 +33,28 @@ a {
     text-decoration: none;
 }
 
-a:focus,
-a:active {
-  outline: none;
+a:link {
+  color: #7cb8bb;
+  background-color: transparent;
+  text-decoration: none;
 }
+
+a:visited {
+  color: #7cb8bb;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #DC8CC3;
+  background-color: transparent;
+}
+
+a:active {
+  color: #DC8CC3;
+  background-color: transparent;
+}
+
 
 
 /* Titles */
