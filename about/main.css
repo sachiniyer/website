@@ -2,12 +2,12 @@
 /* font stuff */
 @font-face {
   font-family: 'TitleFont';
-  src: url('./TurretRoad-ExtraBold.ttf') format('truetype');
+  src: url('../fonts/TurretRoad-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'RegularFont';
-  src: url('./Hack-Regular.ttf') format('truetype');
+  src: url('../fonts/Hack-Regular.ttf') format('truetype');
 }
 
 /* General Colors */
@@ -83,7 +83,7 @@ a:active {
     height: 20em;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2em;
+
 }
 
 .column-left{
@@ -206,7 +206,6 @@ a:active {
     .column {
         width: 100%;
         height: auto;
-        padding-bottom: 0em;
     }
     .row {
         display: flex;
