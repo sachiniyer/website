@@ -5,125 +5,38 @@
     <meta charset="UTF-8">
     <title>Sachin Iyer</title>
     <link rel="manifest" href="https://sachiniyer.com/manifest.json">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./main.css">
+    <script src="./main.js"></script>
 </head>
 
 <body>
-    <div class="jumbotron text-center title">
-        <h1 class="display-1">Sachin Iyer</h1>
+    <div class="bigtitle">
+        <h1>Sachin Iyer</h1>
     </div>
-    <div class="text-center"><img alt="Profile Pic" src="https://sachiniyer.com/profile.jpg" class="responsive-img">
-    </div>
-    <div class="container">
-        <p class="text-center responsive-text">This is my homegrown
-            website that is used as my homebase on the web. I go to NYU,
-            and am either in Brooklyn or San Jose. Oh, and I do computer
-            science and jazz things every now and then.</p>
-    </div>
-    <div class="fixed-bottom">
-        <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="https://sachiniyer.com/about" type="button">
-                                <p class="responsive-text">About</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="https://sachiniyer.com/interesting"
-                                type="button">
-                                <p class="responsive-text">Fun Experience</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="http://github.com/sachiniyer" type="button">
-                                <p class="responsive-text">Github</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block"
-                                href="https://www.linkedin.com/in/sachin-iyer-8b2735217/" type="button">
-                                <p class="responsive-text">LinkedIn</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="https://sachiniyer.com/projects" type="button">
-                                <p class="responsive-text">Projects</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="https://sachiniyer.com/email" type="button">
-                                <p class="responsive-text">Email</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" href="https://sachiniyer.com/resume" type="button">
-                                <p class="responsive-text">Resume</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" rel="me" href="https://mastodon.social/@ripe_mango"
-                                type="button">
-                                <p class="responsive-text">Mastodon</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <a class="btn btn-default btn-block" rel="me" href="https://lemmy.world/u/ripe_banana"
-                                type="button">
-                                <p class="responsive-text">Lemmy</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="responsive-img-div center-column">
+            <img class="responsive-img" alt="Profile Pic" src="https://sachiniyer.com/profile.jpg">
+        </div>
 
-            </div>
-            <div class="container">
-                <button class="carousel-control-prev btn btn-default" type="button" data-bs-target="#carouselIndicators"
-                    data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
-                <button class="carousel-control-next btn btn-default" type="button" data-bs-target="#carouselIndicators"
-                    data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
-            </div>
+        <div class="column-left column">
+            <ul id="innerElements" class="list">
+            </ul>
+        </div>
+
+        <div class="column-right column">
+            <ul id="outerElements" class="list">
+            </ul>
         </div>
     </div>
-    <div id="spacer"></div>
+    <div>
+        <div class="title" onclick="toggleDisplay('sub')">
+            <h2 id="subHeadingLeft" class="leftArrow">↡</h2>
+            <h2 id="subHeading" class="inline"> Other Apps hosted on my Website </h2>
+            <h2 id="subHeadingRight" class="rightArrow">↡</h2>
+        </div>
+        <ul id="subElements" class="list" style="display: block;">
+        </ul>
+    </div>
 </body>
 
 </html>

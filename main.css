@@ -1,70 +1,226 @@
-.title {
-    background-color: #383838;
-    color: #7cb8bb;
+/* Version: 1.0 */
+/* font stuff */
+@font-face {
+  font-family: 'TitleFont';
+  src: url('../fonts/title.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'RegularFont';
+  src: url('../fonts/main.ttf') format('truetype');
+}
+
+/* General Colors */
 body {
     background-color:  #3f3f3f;
+    padding: 0;
 }
-
 
 p {
     color: #7cb8bb;
 }
 
-
-.w-25 {
-		max-width: 400px;
+h1 {
+    font-size: 5em;
 }
 
-.responsive-img {
-		border-radius: 2%;
-		width: 15%;
-		max-width: 400px;
-		height: auto;
-}
-
-.responsive-text {
+h2 {
     font-size: 2em;
 }
 
-.btn-default {
-    background-color: rgba(63,63,63,1);
-    color:#FFF;
-    border-color:  rgba(63,63,63,1);
+a {
+    text-decoration: none;
 }
 
-.carousel-control-next:active, .carousel-control-prev:active, .carousel-control-next.active, .carousel-control-prev.active, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+a:focus,
+a:active {
+  outline: none;
+}
+
+
+/* Titles */
+/* create seperation between each one of the title elements */
+.bigtitle {
     background-color: #383838;
-    color:#FFF;
-    border-color:  rgba(63,63,63,1);
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 1em;
 
 }
-
-#spacer {
-		height: 5em;
+.title {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
+
+/* Spacer */
+.spacer {
+    height: 1em;
+}
+
+/* Image Stuff */
+.responsive-img-div {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.responsive-img {
+    width: 15em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.column {
+    height: 20em;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2em;
+}
+
+.column-left{
+    float: left;
+    width: 40%;
+    order: 1;
+}
+
+.column-right {
+    float: right;
+    width: 40%;
+    order: 3;
+}
+/* Make sure that center column is in between left and right, even if the element comes before column-left */
+.center-column {
+    float: left;
+    width: 20%;
+    order: 2;
+}
+
+.row {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Main Text */
+.responsive-text {
+    color: #7cb8bb;
+    padding-left: 3em;
+    padding-right: 3em;
+    text-align: center;
+    font-family: 'RegularFont', sans-serif;
+}
+
+
+.main-text {
+    font-size: 2em;
+}
+
+.general-text {
+    font-size: 1.75em;
+}
+
+.general-text:hover {
+    color: var(--hover-color);
+}
+
+
+.list {
+    list-style-type: none;
+    column-gap: 1em;
+}
+
+
 
 @media screen and (max-width: 1000px) {
-  .responsive-text {
-    font-size: 3em;
-  }
-	.responsive-img {
-			border-radius: 2%;
-			width: 30%;
-			height: auto;
-	}
+    .responsive-img {
+        width: 30em;
+    }
+    .center-column {
+        flex: 100%;
+        width: 100%;
+        order: 1;
+    }
+    .column-left {
+        float: left;
+        flex-direction: row;
+        order: 2;
+    }
+    .column-right {
+        float: right;
+        flex-direction: row;
+        order: 3;
+    }
+
+    .column {
+        width: 50%;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 4em;
+    }
 
 }
 
 @media screen and (max-width: 600px) {
-  .responsive-text {
-    font-size: 4em;
-  }
-	.responsive-img {
-			border-radius: 2%;
-			width: 60%;
-			height: auto;
-	}
+   .responsive-img {
+        width: 15em;
+        height: auto;
+    }
+    .center-column {
+        flex: 100%;
+        width: 100%;
+        order: 1;
+    }
+    .column-left {
+        float: left;
+        flex-direction: row;
+        order: 2;
+    }
+    .column-right {
+        float: right;
+        flex-direction: row;
+        order: 3;
+    }
 
+    .column {
+        width: 100%;
+        height: auto;
+        padding-bottom: 0em;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0em;
+    }
+    .responsive-text {
+        color: #7cb8bb;
+        padding-left: 0em;
+        padding-right: 0em;
+        text-align: center;
+        font-family: 'RegularFont', sans-serif;
+        font-size: 1em;
+    }
 }
