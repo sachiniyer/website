@@ -23,9 +23,9 @@ function getRandomColor() {
 
 function resizeColumnLists() {
   var columnLists = document.getElementsByClassName('list');
-  var widthOutput = document.documentElement.clientWidth;
-  var columnCount = Math.floor(widthOutput / 600);
   for (var i = 0; i < columnLists.length; i++) {
+    var widthOutput = columnLists[i].offsetWidth;
+    var columnCount = Math.floor(widthOutput / 600);
     columnLists[i].style.columnCount = columnCount;
   }
 }

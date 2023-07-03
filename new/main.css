@@ -68,17 +68,56 @@ a:active {
 
 /* Image Stuff */
 .responsive-img-div {
-    height: auto;
     padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .responsive-img {
-    width: 20em;
-    display: block;
+    width: 15em;
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
+.column {
+    height: 20em;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.column-left{
+    float: left;
+    width: 40%;
+    order: 1;
+}
+
+.column-right {
+    float: right;
+    width: 40%;
+    order: 3;
+}
+/* Make sure that center column is in between left and right, even if the element comes before column-left */
+.center-column {
+    float: left;
+    width: 20%;
+    order: 2;
+}
+
+.row {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 /* Main Text */
 .responsive-text {
@@ -110,21 +149,76 @@ a:active {
 
 
 
-
-
 @media screen and (max-width: 1000px) {
     .responsive-img {
         width: 30em;
-        height: auto;
+    }
+    .center-column {
+        flex: 100%;
+        width: 100%;
+        order: 1;
+    }
+    .column-left {
+        float: left;
+        flex-direction: row;
+        order: 2;
+    }
+    .column-right {
+        float: right;
+        flex-direction: row;
+        order: 3;
+    }
+
+    .column {
+        width: 50%;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3em;
     }
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 760px) {
    .responsive-img {
         width: 15em;
         height: auto;
     }
+    .center-column {
+        flex: 100%;
+        width: 100%;
+        order: 1;
+    }
+    .column-left {
+        float: left;
+        flex-direction: row;
+        order: 2;
+    }
+    .column-right {
+        float: right;
+        flex-direction: row;
+        order: 3;
+    }
 
+    .column {
+        width: 100%;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3em;
+    }
+    .responsive-text {
+        color: #7cb8bb;
+        padding-left: 0em;
+        padding-right: 0em;
+        text-align: center;
+        font-family: 'RegularFont', sans-serif;
+        text-size: 1em;
+    }
 }
-
