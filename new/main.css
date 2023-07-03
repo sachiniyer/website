@@ -177,12 +177,12 @@ a:active {
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 3em;
+        padding-bottom: 4em;
     }
 
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 600px) {
    .responsive-img {
         width: 15em;
         height: auto;
@@ -205,13 +205,14 @@ a:active {
 
     .column {
         width: 100%;
+        height: auto;
     }
     .row {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 3em;
+        padding-bottom: 0em;
     }
     .responsive-text {
         color: #7cb8bb;
@@ -219,6 +220,6 @@ a:active {
         padding-right: 0em;
         text-align: center;
         font-family: 'RegularFont', sans-serif;
-        text-size: 1em;
+        font-size: 1em;
     }
 }
