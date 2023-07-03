@@ -1,0 +1,78 @@
+.title {
+    background-color: #088796;
+    color: #FFFFFF
+}
+
+body {
+    background-color: #3797a4;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+.hidden {
+		font-size: 0;
+}
+
+h1 {
+		text-align: center;
+		text-decoration: underline;
+    color: #FFFFFF;
+		font-weight: bold
+}
+
+h2 {
+    color: #FFFFFF;
+		text-align: center
+}
+
+h3 {
+    color: #FFFFFF;
+		text-align: center
+}
+
+h4 {
+    color: #FFFFFF;
+		text-align: center
+}
+
+h5 {
+    color: #FFFFFF;
+		text-align: center
+}
+
+h6 {
+    color: #FFFFFF;
+		text-align: center
+}
+
+ol {
+		text-align: center;
+    color: #FFFFFF;
+		list-style-position: inside
+
+}
+
+.reallink {
+		color: #b8b8b8
+}
+
+p {
+    color: #FFFFFF;
+		text-align: center
+}
+
+.mybutton {
+    background-color: #088796;
+    outline: none
+}
+
+.spacer {
+		margin-top: 20em;
+}
+
+.maintext {
+		padding-left: 20%;
+		padding-right: 20%
+}

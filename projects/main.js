@@ -1,162 +1,77 @@
-/* jshint esversion: 8 */
+let PROJECTS_API = "https://api.github.com/repos/sachiniyer/resume/contents/projects?ref=master";
 
-const url = "https://api.github.com/users/sachiniyer/repos";
-const weight_url = "./weights.csv";
-var weights = [];
-var blackweights = [];
-var reporaw;
-var reponames = [];
-var retain = {};
-
-const classMap = {
-  h1: 'hidden',
-  a: 'reallink'
-};
-
-const bindings = Object.keys(classMap)
-  .map(key => ({
-    type: 'output',
-    regex: new RegExp(`<${key}(.*)>`, 'g'),
-    replace: `<${key} class="${classMap[key]}" $1>`
-  }));
-const conv = new showdown.Converter({
-  extensions: [...bindings]
-});
-
-conv.setFlavor('github');
-
-// check if webcontent.md exists and display that
-// if it does not exists just display readme.md
-// then append head and body to dict that has weights.
-
-
-async function processrepos(repos) {
-
-  var elements = {};
-  for (let i = 0; i < repos.length; i++) {
-    var name = repos[i].name;
-    var branch = repos[i].default_branch;
-
-    var repourl = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/webcontent.md";
-    var repourl_back = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/README.md";
-
-    var flag = false;
-    await fetch(repourl)
-      .then((response) => {
-        if (response.status == 200) {
-          flag = true;
-        }
-        return response.text();
-      })
-      .then((data) => {
-        if (flag) {
-          elements[name] = {
-            href: "https://github.com/sachiniyer" + name,
-            title: name,
-            body: data
-          };
-        }
-      })
-      .catch((err) => {
-        console.log("webcontent.md not found for: " + name);
-      });
-
-
-    if (!flag) {
-      await fetch(repourl_back)
-        .then((response) => {
-          flag = true;
-          return response.text();
-        })
-        .then((data) => {
-          elements[name] = {
-            href: "https://github.com/sachiniyer" + name,
-            title: name,
-            body: data
-          };
-        })
-        .catch((err) => {
-          console.log("README.md not found for: " + name);
-        });
-    }
-  }
-
-  var final_list = [];
-  for (var w of weights) {
-    if (elements[w] != null) {
-      final_list.push(elements[w]);
-    }
-  }
-  var test_final = (e) => { for (let k of final_list) { if (k.title == e) { return false; } } return true; };
-
-  for (var e in elements) {
-    if (test_final(e) && !(blackweights.includes(e))) {
-      final_list.push(elements[e]);
-    }
-  }
-
-
-  for (var i of final_list) {
-    var newhead = document.createElement('h1');
-    var a = document.createElement('a');
-    a.href = "https://github.com/sachiniyer/" + i.title;
-    a.innerHTML = i.title;
-    newhead.appendChild(a);
-    console.log(i.title);
-    var newbod = conv.makeHtml(i.body);
-    var div = document.createElement("div");
-    div.innerHTML = newbod;
-    document.getElementById("repos").appendChild(newhead);
-    document.getElementById("repos").appendChild(div);
-  }
+async function createElements() {
+  let projectsRaw = await getProjectsRaw();
+  let projects = parseProjects(projectsRaw);
+  addProjects(projects);
 }
 
-options = {
-  method: "GET",
-};
-
-async function set_weights() {
-  let response = await fetch(weight_url, options);
-  let data = await response.text();
-  var temp = "";
-  var color = true;
-  for (var a of data) {
-    if (a == "|") {
-      color = false;
-      continue;
-    }
-    if (a == ',') {
-      if (temp != "") {
-        if (color) {
-          weights.push(temp);
-          temp = "";
-        }
-        else {
-          blackweights.push(temp);
-          temp = "";
-        }
+async function getProjectsRaw() {
+  let urls = [];
+  await fetch(PROJECTS_API)
+    .then(response => response.json())
+    .then(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        urls.push(data[i].download_url);
       }
+    });
+  let res = [];
+  let futures = [];
+  for (let i = 0; i < urls.length; i++) {
+    futures.push(
+      fetch(urls[i])
+        .then(response => response.text())
+        .then(function (data) {
+          res.push(data);
+        }));
+  }
+  await Promise.all(futures);
+  return res;
+}
 
-    }
-    else {
-      temp += a;
+function parseProjects(raw) {
+  let parsed = fixHref(raw);
+  for (let i = 0; i < parsed.length; i++) {
+    let str = parsed[i].split("{");
+    let title = str[1];
+    let desc = str[2]
+    parsed[i] = {
+      title: title.trim().split("}")[0],
+      desc: desc.trim().split("}")[0]
     }
   }
-  console.log(weights);
-  console.log(blackweights);
+  return parsed;
 }
 
-
-async function run() {
-  await set_weights();
-  fetch(url, options)
-    .then((response) => {
-      return response.text();
-    })
-    .then((data) => {
-      reporaw = JSON.parse(data.toString());
-      processrepos(reporaw);
+function fixHref(raw) {
+  let res = [];
+  for (let i = 0; i < raw.length; i++) {
+    let str = raw[i];
+    const convertedString = str.replace(/\\href\{(.*?)\}\{(.*?)\}/g, (match, url, text) => {
+      return `<a href="${url}">${text.trim()}</a>`;
     });
+    res.push(convertedString);
+  }
+  return res;
 }
 
-run();
+function addProjects(projects) {
+  let container = document.getElementById("projects");
+  for (let i = 0; i < projects.length; i++) {
+    let project = projects[i];
+    let title = project.title;
+    let desc = project.desc;
+    let projectElement = document.createElement("div");
+    projectElement.classList.add("project");
+    let titleElement = document.createElement("h2");
+    titleElement.innerHTML = title;
+    let descElement = document.createElement("p");
+    descElement.innerHTML = desc;
+    projectElement.appendChild(titleElement);
+    projectElement.appendChild(descElement);
+    container.appendChild(projectElement);
+  }
+}
+
+
+window.addEventListener('load', createElements);
