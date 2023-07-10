@@ -1,20 +1,27 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
+
+<head>
+    <meta charset="UTF-8" />
     <title>Webcam</title>
     <script src="https://sachiniyer.github.io/websitecam/main.js"></script>
-  </head>
-  <body style="background-color:#3797a4">
+    <script src="../matomo.js"></script>
+</head>
+
+<body style="background-color:#3797a4">
     <p align="center">
-      This is a basic webstreaming done from a camera on a raspberry pi in new york that is connected through reverse ssh tunneling to a server in california through ffmpeg and matroska containers that is then delivered to you. Even at 10 frames per second there is massive latency, so you're not going to see your command for a while. WASD to move.
+        This is a basic webstreaming done from a camera on a raspberry pi in new york that is connected through reverse
+        ssh tunneling to a server in california through ffmpeg and matroska containers that is then delivered to you.
+        Even at 10 frames per second there is massive latency, so you're not going to see your command for a while. WASD
+        to move.
     </p>
     <h2 align="center" id="key"></h2>
     <p align="center"><button onclick="move('0+')">↑</button></p>
     <p align="center">
-      <button onclick="move('1-')">←</button>
-      <button onclick="move('1+')">→</button>
+        <button onclick="move('1-')">←</button>
+        <button onclick="move('1+')">→</button>
     </p>
     <p align="center"><button onclick="move('0-')">↓</button></p>
-  </body>
+</body>
+
 </html>
