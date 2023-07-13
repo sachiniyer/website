@@ -21,6 +21,9 @@ function createElements() {
 }
 
 function createElement(elem, key, value) {
+  if (key == "Request Failed") {
+    return
+  }
   var li = document.createElement('li');
   var a = document.createElement('a');
   var p = document.createElement('p');
