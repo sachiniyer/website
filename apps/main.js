@@ -1,5 +1,3 @@
-let sub_web_exclude = ["tunnel.sachiniyer.com", "sachiniyer.com"];
-
 function getRandomColor() {
   var colors = ['#7F9F7F', '#F0DFAF', '#DC8CC3'];
   var randomIndex = Math.floor(Math.random() * colors.length);
@@ -21,9 +19,6 @@ function createElements() {
 }
 
 function createElement(elem, key, value) {
-  if (key == "Request Failed") {
-    return
-  }
   var li = document.createElement('li');
   var a = document.createElement('a');
   var p = document.createElement('p');
@@ -41,7 +36,6 @@ function createElement(elem, key, value) {
   p.innerHTML = key;
 
   elem.appendChild(li);
-
 }
 
 
@@ -49,7 +43,9 @@ function createSubElements() {
   var subElements = document.getElementById('subElements');
   let socket = new WebSocket("wss://status.sachiniyer.com/ws");
   socket.onmessage = function (event) {
-    createElement(subElements, event.data.substring(8), event.data)
+    if (!event.data.includes("Request Failed")) {
+      createElement(subElements, event.data.substring(8), event.data)
+    }
   };
 }
 
