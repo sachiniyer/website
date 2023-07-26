@@ -1,15 +1,16 @@
 let outer_web = {
   "Github": "https://github.com/sachiniyer",
   "Linkedin": "https://www.linkedin.com/in/sachin-iyer-8b2735217/",
+  "Blog": "https://blog.sachiniyer.com",
   "Mastodon": "https://mastodon.social/@ripe_mango",
-  "Lemmy": "https://lemmy.world/u/ripe_banana"
+  "Lemmy": "https://lemmy.world/u/ripe_banana",
 };
 let inner_web = {
-  "Resume": "/resume",
-  "Email": "/email",
   "Projects": "/projects",
   "About": "/about",
-  "Apps": "/apps"
+  "Resume": "/resume",
+  "Apps": "/apps",
+  "Email": "/email",
 };
 
 
