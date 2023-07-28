@@ -179,7 +179,9 @@ a:active {
         align-items: center;
         padding-bottom: 4em;
     }
-
+    .general-text {
+        font-size: 2.5em;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -215,12 +217,8 @@ a:active {
         align-items: center;
         padding-bottom: 0em;
     }
-    .responsive-text {
-        color: #7cb8bb;
-        padding-left: 0em;
-        padding-right: 0em;
-        text-align: center;
-        font-family: 'RegularFont', sans-serif;
-        font-size: 1em;
+    .general-text {
+        font-size: 2.5em;
     }
+
 }
