@@ -7,10 +7,10 @@ let outer_web = {
 };
 let inner_web = {
   "Projects": "/projects",
-  "About": "/about",
   "Resume": "/resume",
-  "Apps": "/apps",
+  "About": "/about",
   "Email": "/email",
+  "Apps": "/apps",
 };
 
 
