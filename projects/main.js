@@ -47,7 +47,7 @@ function fixHref(raw) {
   let res = [];
   for (let i = 0; i < raw.length; i++) {
     let str = raw[i];
-    const convertedString = str.replace(/\\href\{(.*?)\}\{(.*?)\}/g, (match, url, text) => {
+    const convertedString = str.replace(/\\href\{(.*?)\}\{(.*?)\}/g, (_, url, text) => {
       return `<a href="${url}">${text.trim()}</a>`;
     });
     res.push(convertedString);
@@ -61,15 +61,14 @@ function addProjects(projects) {
     let project = projects[i];
     let title = project.title;
     let desc = project.desc;
-    let projectElement = document.createElement("div");
-    projectElement.classList.add("project");
-    let titleElement = document.createElement("h2");
+    let add = document.createElement("tr")
+    let titleElement = document.createElement("td");
     titleElement.innerHTML = title;
-    let descElement = document.createElement("p");
+    let descElement = document.createElement("td");
     descElement.innerHTML = desc;
-    projectElement.appendChild(titleElement);
-    projectElement.appendChild(descElement);
-    container.appendChild(projectElement);
+    add.append(titleElement)
+    add.append(descElement)
+    container.append(add)
   }
 }
 

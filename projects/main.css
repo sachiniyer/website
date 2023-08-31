@@ -1,96 +1,97 @@
 /* Version: 1.0 */
 /* font stuff */
 @font-face {
-  font-family: 'TitleFont';
-  src: url('../fonts/title.ttf') format('truetype');
+  font-family: "TitleFont";
+  src: url("../fonts/title.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'RegularFont';
-  src: url('../fonts/main.ttf') format('truetype');
+  font-family: "RegularFont";
+  src: url("../fonts/main.ttf") format("truetype");
 }
 
 /* General Colors */
 body {
-    background-color:  #3f3f3f;
-    color: #7cb8bb;
-    text-align: center;
-}
-
-p {
-    font-size: 1.25em;
+  background-color: #3f3f3f;
+  color: #7cb8bb;
+  font-family: "RegularFont", sans-serif;
+  font-size: 1.25em;
 }
 
 h2 {
-    font-size: 2em;
+  font-size: 2em;
 }
 
-li {
-    list-style-type: none;
-}
-a:link {
-  color: #7F9F7F;
-  background-color: transparent;
-  text-decoration: none;
-}
-
+a:link,
 a:visited {
-  color: #7F9F7F;
+  color: #7f9f7f;
   background-color: transparent;
   text-decoration: none;
 }
 
-a:hover {
-  color: #DC8CC3;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
+a:hover,
 a:active {
-  color: #DC8CC3;
+  color: #dc8cc3;
   background-color: transparent;
   text-decoration: underline;
 }
 
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 70%;
+}
+
+th,
+td {
+  border: 1px solid #96d4d4;
+  padding: 1em;
+}
+
+tr:hover {
+  background-color: #383838;
+}
+
+th {
+  font-size: 1.5em;
+}
 
 /* Titles */
 .bigtitle {
-    background-color: #383838;
-    color: #7cb8bb;
-    text-align: center;
-    font-family: 'TitleFont', sans-serif;
-    padding: 1em;
-    font-size: 2em;
-
-}
-.title {
-    background-color: #383838;
-    color: #7cb8bb;
-    text-align: center;
-    font-family: 'TitleFont', sans-serif;
-    padding: 0.5em;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #383838;
+  color: #7cb8bb;
+  text-align: center;
+  font-family: "TitleFont", sans-serif;
+  padding: 1em;
+  font-size: 2em;
 }
 
-.main-text {
-    width: 60%;
-    margin: auto;
-    padding: 1em;
-
+/* Main */
+.main {
+  padding-top: 2em;
+  padding-left: auto;
+  padding-right: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 @media screen and (max-width: 1000px) {
-    .main-text {
-        width: 85%;
-    }
+  table {
+    width: 85%;
+  }
+  th,
+  td {
+    border: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .main-text {
-        width: 95%;
-    }
+  table {
+    width: 85%;
+  }
+  th,
+  td {
+    border: none;
+  }
 }
