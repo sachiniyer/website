@@ -9,7 +9,7 @@ let inner_web = {
   "Projects": "/projects",
   "Resume": "/resume",
   "About": "/about",
-  "Email": "/email",
+  "Contact": "/contact",
   "Apps": "/apps",
 };
 
