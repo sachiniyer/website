@@ -20,7 +20,7 @@ My favorite roasters right now are [Devocion](https://www.devocion.com/) in New 
 
 ### Biking
 
-Lastly, I really enjoy commuting by bike. Walkable cities are the best.
+Lastly, I really enjoy commuting by [bike](https://bikehistory.org/bikes/sprint/). [Walkable cities](https://en.wikipedia.org/wiki/15-minute_city) are the best.
 
 # Fun Version
 
