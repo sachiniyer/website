@@ -2,11 +2,16 @@ let PROJECTS_API = "https://api.github.com/repos/sachiniyer/resume/contents/proj
 let RESUME_LINK = "https://raw.githubusercontent.com/sachiniyer/resume/master/resume.tex"
 
 async function createElements() {
+  let loading_elem = document.createElement("p");
+  loading_elem.setAttribute('font-size', '1.5em');
+  loading_elem.innerHTML = "Loading...";
+  document.getElementById("projects").append(loading_elem);
   let projectsRaw = await getProjectsRaw();
   let projects = parseProjects(projectsRaw);
   let order = await getOrder(projects);
   let sorted_projects = sortProjects(projects, order);
   addProjects(sorted_projects);
+  loading_elem.remove();
 }
 
 async function getProjectsRaw() {
@@ -56,7 +61,7 @@ function fixHref(str) {
   });
 }
 
-async function getOrder(names) {
+async function getOrder(_names) {
   let res = [];
   await fetch(RESUME_LINK)
     .then(response => response.text())

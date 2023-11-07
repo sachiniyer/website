@@ -1,3 +1,5 @@
+let STATUS_API = "wss://status.sachiniyer.com/ws";
+let ERROR_MESSAGE = "Error loading data - check status page";
 function getRandomColor() {
   var colors = ['#7F9F7F', '#F0DFAF', '#DC8CC3'];
   var randomIndex = Math.floor(Math.random() * colors.length);
@@ -41,12 +43,28 @@ function createElement(elem, key, value) {
 
 function createSubElements() {
   var subElements = document.getElementById('subElements');
-  let socket = new WebSocket("wss://status.sachiniyer.com/ws");
+  let loading = document.createElement('p');
+  loading.setAttribute('class', 'general-text responsive-text');
+  loading.innerHTML = "Loading...";
+  subElements.appendChild(loading);
+
+  let socket = new WebSocket(STATUS_API);
+  socket.onerror = function (event) {
+    loading.remove();
+    let error = document.createElement('p');
+    error.setAttribute('class', 'general-text responsive-text');
+    error.innerHTML = ERROR_MESSAGE;
+    subElements.appendChild(error);
+  };
   socket.onmessage = function (event) {
     if (!event.data.includes("Request Failed")) {
+      if (loading.parentNode) {
+        loading.remove();
+      }
       createElement(subElements, event.data.substring(8), event.data)
     }
   };
+
 }
 
 
