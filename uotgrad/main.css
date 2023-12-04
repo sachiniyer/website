@@ -1,0 +1,96 @@
+/* Version: 1.0 */
+/* font stuff */
+@font-face {
+  font-family: 'TitleFont';
+  src: url('../fonts/title.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RegularFont';
+  src: url('../fonts/main.ttf') format('truetype');
+}
+
+/* General Colors */
+body {
+    background-color:  #3f3f3f;
+    color: #7cb8bb;
+    text-align: center;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+li {
+    list-style-type: none;
+}
+a:link {
+  color: #7F9F7F;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #7F9F7F;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #DC8CC3;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #DC8CC3;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+/* Titles */
+.bigtitle {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 1em;
+    font-size: 2em;
+
+}
+.title {
+    background-color: #383838;
+    color: #7cb8bb;
+    text-align: center;
+    font-family: 'TitleFont', sans-serif;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-text {
+    width: 60%;
+    margin: auto;
+    padding: 1em;
+
+}
+
+@media screen and (max-width: 1000px) {
+    .main-text {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-text {
+        width: 95%;
+    }
+}
