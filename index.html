@@ -14,15 +14,24 @@
     </div>
     <div class="row">
       <div class="responsive-img-div center-column">
-        <img
-          id="profile"
-          class="responsive-img"
-          alt="Profile Pic"
-          src="./profile.jpg"
+        <div
           onMouseOver="profileToggle()"
           onMouseOut="profileToggle();"
           onclick="profileToggle()"
-        />
+        >
+          <img
+            id="profile"
+            class="responsive-img"
+            alt="Profile Pic"
+            src="./profile.jpg"
+          />
+          <img
+            id="profile-alt"
+            class="responsive-img responsive-img-alt"
+            alt="Profile Pic"
+            src="./profile-alt.jpg"
+          />
+        </div>
       </div>
 
       <div class="column-left column">

@@ -72,11 +72,12 @@ function createOuterElements() {
 }
 
 function profileToggle() {
-  var x = document.getElementById("profile");
-  if (x.src.match("profile.jpg")) {
-    x.src = "profile-alt.jpg";
+  if (document.getElementById("profile").style.display == "none") {
+    document.getElementById("profile").style.display = "block";
+    document.getElementById("profile-alt").style.display = "none";
   } else {
-    x.src = "profile.jpg";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("profile-alt").style.display = "block";
   }
 }
 
