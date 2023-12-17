@@ -4,9 +4,7 @@ My name is Sachin. I recently graduated from NYU and am currently working as a S
 
 # Computer Science Interests
 
-I am not really sure exactly what I am interested in yet, but you should check my [projects page](/projects) for what I am doing right now.
-
-Mostly, I am interested in any cool problem that comes across my computer screen.
+Check my [projects page](/projects) for what I've worked on.
 
 # Hobbies
 
