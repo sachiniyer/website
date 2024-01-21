@@ -5,7 +5,6 @@ let RESUME_LINK =
 
 async function createElements() {
   let loading_elem = document.createElement("p");
-  loading_elem.setAttribute("font-size", "1.5em");
   loading_elem.innerHTML = "Loading...";
   document.getElementById("projects").append(loading_elem);
   let projectsRaw = await getProjectsRaw();
