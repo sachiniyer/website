@@ -1,63 +1,15 @@
-/* Version: 1.0 */
-/* font stuff */
-@font-face {
-  font-family: "TitleFont";
-  src: url("../fonts/title.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "RegularFont";
-  src: url("../fonts/main.ttf") format("truetype");
-}
+@import url("../css/links.css");
+@import url("../css/fonts.css");
+@import url("../css/bigtitle.css");
+@import url("../css/body.css");
+@import url("../css/p.css");
 
 /* General Colors */
-body {
-  background-color: #3f3f3f;
-  color: #7cb8bb;
-  text-align: center;
-}
-
 p {
-  color: #7cb8bb;
   text-align: left;
-  font-family: "RegularFont", sans-serif;
-  font-size: 1.5em;
-}
-
-a:link {
-  color: #7f9f7f;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #7f9f7f;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #dc8cc3;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-a:active {
-  color: #dc8cc3;
-  background-color: transparent;
-  text-decoration: underline;
 }
 
 /* Titles */
-.bigtitle {
-  background-color: #383838;
-  color: #7cb8bb;
-  text-align: center;
-  font-family: "TitleFont", sans-serif;
-  padding: 1em;
-  font-size: 2em;
-}
-
 .maintext {
   padding-top: 2em;
   padding-left: 10em;

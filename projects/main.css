@@ -1,44 +1,12 @@
-/* Version: 1.0 */
-/* font stuff */
-@font-face {
-  font-family: "TitleFont";
-  src: url("../fonts/title.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "RegularFont";
-  src: url("../fonts/main.ttf") format("truetype");
-}
-
-/* General Colors */
-body {
-  background-color: #3f3f3f;
-  color: #7cb8bb;
-  font-family: "RegularFont", sans-serif;
-  font-size: 1.25em;
-}
-
-h2 {
-  font-size: 2em;
-}
-
-a:link,
-a:visited {
-  color: #7f9f7f;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover,
-a:active {
-  color: #dc8cc3;
-  background-color: transparent;
-  text-decoration: underline;
-}
+@import url("../css/links.css");
+@import url("../css/fonts.css");
+@import url("../css/bigtitle.css");
+@import url("../css/body.css");
+@import url("../css/p.css");
+@import url("../css/h2.css");
 
 table {
   border-collapse: collapse;
-  text-align: center;
   width: 70%;
 }
 
@@ -52,41 +20,14 @@ tr:hover {
   background-color: #383838;
 }
 
-th {
-  font-size: 1.5em;
-}
-
-/* Titles */
-.bigtitle {
-  background-color: #383838;
-  color: #7cb8bb;
-  text-align: center;
-  font-family: "TitleFont", sans-serif;
-  padding: 1em;
-  font-size: 2em;
-}
-
 /* Main */
 .main {
-  padding-top: 2em;
-  padding-left: auto;
-  padding-right: auto;
-  align-items: center;
+  padding-top: 4em;
   justify-content: center;
   display: flex;
 }
 
 @media screen and (max-width: 1000px) {
-  table {
-    width: 85%;
-  }
-  th,
-  td {
-    border: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
   table {
     width: 85%;
   }

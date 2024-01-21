@@ -1,9 +1,11 @@
-let PROJECTS_API = "https://api.github.com/repos/sachiniyer/resume/contents/projects?ref=master";
-let RESUME_LINK = "https://raw.githubusercontent.com/sachiniyer/resume/master/resume.tex"
+let PROJECTS_API =
+  "https://api.github.com/repos/sachiniyer/resume/contents/projects?ref=master";
+let RESUME_LINK =
+  "https://raw.githubusercontent.com/sachiniyer/resume/master/resume.tex";
 
 async function createElements() {
   let loading_elem = document.createElement("p");
-  loading_elem.setAttribute('font-size', '1.5em');
+  loading_elem.setAttribute("font-size", "1.5em");
   loading_elem.innerHTML = "Loading...";
   document.getElementById("projects").append(loading_elem);
   let projectsRaw = await getProjectsRaw();
@@ -18,11 +20,11 @@ async function getProjectsRaw() {
   let urls = [];
   let names = [];
   await fetch(PROJECTS_API)
-    .then(response => response.json())
+    .then((response) => response.json())
     .then(function (data) {
       for (let i = 0; i < data.length; i++) {
         urls.push(data[i].download_url);
-        names.push(data[i].name.slice(0, -4))
+        names.push(data[i].name.slice(0, -4));
       }
     });
   let res = [];
@@ -30,10 +32,11 @@ async function getProjectsRaw() {
   for (let i = 0; i < urls.length; i++) {
     futures.push(
       fetch(urls[i])
-        .then(response => response.text())
+        .then((response) => response.text())
         .then(function (data) {
-          res.push({ "data": data, "name": names[i] });
-        }));
+          res.push({ data: data, name: names[i] });
+        }),
+    );
   }
   await Promise.all(futures);
   return res;
@@ -45,11 +48,11 @@ function parseProjects(raw) {
     let parsed = fixHref(raw[i]["data"]);
     let str = parsed.split("{");
     let title = str[1];
-    let desc = str[2]
+    let desc = str[2];
     res.push({
       title: title.trim().split("}")[0],
       desc: desc.trim().split("}")[0],
-      name: raw[i]["name"]
+      name: raw[i]["name"],
     });
   }
   return res;
@@ -64,7 +67,7 @@ function fixHref(str) {
 async function getOrder(_names) {
   let res = [];
   await fetch(RESUME_LINK)
-    .then(response => response.text())
+    .then((response) => response.text())
     .then(function (data) {
       let lines = data.split("\n");
       for (let i = 0; i < lines.length; i++) {
@@ -80,7 +83,7 @@ async function getOrder(_names) {
 function sortProjects(projects, order) {
   let res = [];
   for (let name in order) {
-    let index = projects.findIndex(x => x.name === order[name]);
+    let index = projects.findIndex((x) => x.name === order[name]);
     res.push(projects[index]);
     projects.splice(index, 1);
   }
@@ -94,15 +97,19 @@ function addProjects(projects) {
     let project = projects[i];
     let title = project.title;
     let desc = project.desc;
-    let add = document.createElement("tr")
+    let add = document.createElement("tr");
     let titleElement = document.createElement("td");
-    titleElement.innerHTML = title;
+    let titleP = document.createElement("p");
+    titleElement.appendChild(titleP);
+    titleP.innerHTML = title;
     let descElement = document.createElement("td");
-    descElement.innerHTML = desc;
-    add.append(titleElement)
-    add.append(descElement)
-    container.append(add)
+    let descP = document.createElement("p");
+    descElement.appendChild(descP);
+    descP.innerHTML = desc;
+    add.append(titleElement);
+    add.append(descElement);
+    container.append(add);
   }
 }
 
-window.addEventListener('load', createElements);
+window.addEventListener("load", createElements);
