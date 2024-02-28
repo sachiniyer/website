@@ -1,9 +1,10 @@
 @import url("./css/links.css");
 @import url("./css/fonts.css");
 @import url("./css/bigtitle.css");
-@import url("../css/body.css");
-@import url("../css/p.css");
-@import url("../css/spacer.css");
+@import url("./css/body.css");
+@import url("./css/p.css");
+@import url("./css/spacer.css");
+@import url("./css/consts.css");
 
 .title {
   background-color: #383838;
@@ -100,7 +101,7 @@
   column-gap: 1em;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: var(--medium-size)) {
   .responsive-img {
     width: 30em;
   }
