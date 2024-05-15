@@ -1,0 +1,30 @@
+@import url("../../css/links.css");
+@import url("../../css/fonts.css");
+@import url("../../css/bigtitle.css");
+@import url("../../css/body.css");
+@import url("../../css/p.css");
+@import url("../../css/h2.css");
+
+li {
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 0.25em;
+}
+
+img {
+  width: 20%;
+  height: auto;
+}
+
+.wrap {
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  img {
+    width: 80%;
+    height: auto;
+  }
+}

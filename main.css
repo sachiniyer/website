@@ -4,7 +4,6 @@
 @import url("./css/body.css");
 @import url("./css/p.css");
 @import url("./css/spacer.css");
-@import url("./css/consts.css");
 
 .title {
   background-color: #383838;
@@ -54,7 +53,7 @@
   width: 40%;
   order: 3;
 }
-/* Make sure that center column is in between left and right, even if the element comes before column-left */
+
 .center-column {
   float: left;
   width: 20%;
@@ -101,7 +100,7 @@
   column-gap: 1em;
 }
 
-@media screen and (max-width: var(--medium-size)) {
+@media screen and (min-width: 600px) and (max-width: 900px) {
   .responsive-img {
     width: 30em;
   }
@@ -156,7 +155,6 @@
     flex-direction: row;
     order: 3;
   }
-
   .column {
     width: 100%;
     height: auto;
