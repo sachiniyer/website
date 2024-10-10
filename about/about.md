@@ -14,7 +14,7 @@ I like Jazz, quite a bit. I played trombone and the keyboard in high school. Som
 
 ### Coffee
 
-My favorite roasters right now are [Devocion](https://www.devocion.com/) in New York, [Chromatic](https://www.chromaticcoffee.com/) in San Jose, and [Herkimer](https://herkimercoffee.com/) in Seattle.
+My favorite roasters right now are [Sey](https://www.seycoffee.com/) in New York, [Chromatic](https://www.chromaticcoffee.com/) in San Jose, and [Stamp Act](https://stampactcoffee.com/) in Seattle.
 
 ### Biking
 
