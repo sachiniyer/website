@@ -1,9 +1,23 @@
+import {
+  pipeline,
+  env,
+} from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.1";
+
 let PROJECTS_API =
   "https://api.github.com/repos/sachiniyer/resume/contents/projects?ref=master";
 let RESUME_LINK =
   "https://raw.githubusercontent.com/sachiniyer/resume/master/resume.tex";
+let TOPICS = [
+  "Web Development",
+  "Machine Learning",
+  "Dev Ops",
+  "Embedded Systems",
+  "Challenges/Certificates",
+];
 
-async function createElements() {
+env.allowLocalModels = false;
+
+export async function createElements() {
   let loading_elem = document.createElement("p");
   loading_elem.innerHTML = "Loading...";
   document.getElementById("projects").append(loading_elem);
@@ -90,8 +104,7 @@ function sortProjects(projects, order) {
   return res;
 }
 
-function addProjects(projects) {
-  let container = document.getElementById("projects");
+function addProjectList(projects, container) {
   for (let i = 0; i < projects.length; i++) {
     let project = projects[i];
     let title = project.title;
@@ -111,4 +124,49 @@ function addProjects(projects) {
   }
 }
 
-window.addEventListener("load", createElements);
+function addTopicList(projects, topic, container) {
+  let addTopic = document.createElement("tr");
+  let topicElement = document.createElement("th");
+  let topicH = document.createElement("h2");
+  topicElement.appendChild(topicH);
+  topicH.innerHTML = topic;
+  topicElement.setAttribute("colspan", "2");
+  topicElement.appendChild(topicH);
+  addTopic.append(topicElement);
+  container.append(addTopic);
+  addProjectList(projects, container);
+}
+
+function addProjects(projects) {
+  let container = document.getElementById("projects");
+  addProjectList(projects, container);
+}
+
+async function load_model() {
+  const classifier = await pipeline(
+    "zero-shot-classification",
+    "Xenova/nli-deberta-v3-xsmall",
+  );
+  const text =
+    "Last week I upgraded my iOS version and ever since then my phone has been overheating whenever I use your app.";
+  const labels = ["mobile", "billing", "website", "account access"];
+  return classifier;
+}
+
+async function classifyProject(project, classifier) {
+  const title = project.title;
+  const desc = project.desc;
+  const output = await classifier(
+    `title: ${title} description ${desc}`,
+    TOPICS,
+  );
+  return output;
+}
+
+async function addTopics(projects) {
+  let container = document.getElementById("projects");
+  // for each projects spawn a future to classify the project
+  // aggregate all of the results
+  // create the topic project lists
+  // use addTopicList to create the topics themselves
+}
