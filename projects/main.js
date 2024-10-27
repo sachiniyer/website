@@ -143,14 +143,10 @@ function addProjects(projects) {
 }
 
 async function load_model() {
-  const classifier = await pipeline(
+  return await pipeline(
     "zero-shot-classification",
     "Xenova/nli-deberta-v3-xsmall",
   );
-  const text =
-    "Last week I upgraded my iOS version and ever since then my phone has been overheating whenever I use your app.";
-  const labels = ["mobile", "billing", "website", "account access"];
-  return classifier;
 }
 
 async function classifyProject(project, classifier) {
