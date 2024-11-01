@@ -163,28 +163,6 @@ function addProjects(projects) {
   addProjectList(projects, container);
 }
 
-/*
- * want to cluster the projects on my site together automatically inside of the browser. To do this, I will do with the following:
- *  - Pull https://github.com/huggingface/transformers.js
- *  - Load up a LLM
- *  - Do the inference through the LLM and format back the results
- *  - Display the information back through the browser
- *
- * I will do everything around the actual inference before the interview. During the interview, we could pair program
- * to do the actual inference (estimated time 10min) and bugfix anything that comes up (estimated time 10min). At a base goal,
- * I hope that we are at least getting output from the llm. As an extension, we could add a feature to have the
- * llm expand/improve the project descriptions before displaying them.
- *
- * Everything is written in plain javascript so it should hopefully be easy to understand.
- *
- * Also just as a quick sidenote, I tried this once before using both k-means and lda to cluster the topics and cosine similarity
- * to apply labels. Unfortunately, there is not enough information encoded in the actual project descriptions to use classical techniques. Now,
- * I want to try to use the information encoded in an llm to try and do the clustering/labeling for us.
- */
-// task 1: get the basic classification and display it in the UI
-// task 2: parallelize the functionality through futures
-// task 3: add another model to expand on the descriptions before publishing to the browser
-// task 4: use web workers to decrease processing computer even further
 async function addTopics(projects) {
   let projects_len = projects.length;
   let projects_per_worker = Math.ceil(projects_len / cpu_count);
