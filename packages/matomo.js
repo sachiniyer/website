@@ -4,29 +4,24 @@ _paq.push(["trackPageView"]);
 _paq.push(["enableLinkTracking"]);
 (function () {
   var u = "//track.sachiniyer.com/";
-  _paq.push(["setTrackerUrl", u + "matomo.php"]);
-  _paq.push(["setSiteId", "1"]);
-  var d = document,
-    g = d.createElement("script"),
-    s = d.getElementsByTagName("script")[0],
-    timeout = setTimeout(function () {
-      console.warn("Matomo script loading timed out.");
-      if (g && g.parentNode) {
-        g.parentNode.removeChild(g);
+
+  fetch(u + "matomo.php", { method: "HEAD" })
+    .then(function (response) {
+      if (response.ok) {
+        console.log("Matomo server is reachable. Loading script.");
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      } else {
+        console.warn("Matomo server is unreachable. Script not loaded.");
       }
-    }, 1000); // 1 second timeout
-
-  g.async = true;
-  g.src = u + "matomo.js";
-
-  g.onload = function () {
-    clearTimeout(timeout); // Clear the timeout if the script loads successfully
-  };
-
-  g.onerror = function () {
-    clearTimeout(timeout);
-    console.error("Matomo script failed to load.");
-  };
-
-  s.parentNode.insertBefore(g, s);
+    })
+    .catch(function (error) {
+      console.error("Error reaching Matomo server:", error);
+    });
 })();
