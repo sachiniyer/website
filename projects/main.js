@@ -183,7 +183,6 @@ async function addTopics(projects) {
     );
     if (topicedResults.length === projects_len) {
       clearInterval(interval);
-      console.log(topicedResults);
       let topics = {};
       for (let project of topicedResults) {
         let topic = project["topic"];
