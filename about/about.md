@@ -10,7 +10,7 @@ Check my [projects page](/projects) for what I've worked on.
 
 ### Jazz
 
-I like Jazz, quite a bit. I played trombone and the keyboard in high school. Some of my historically favorite albums are [Duke Ellington & John Coltrane](https://en.wikipedia.org/wiki/Duke_Ellington_%26_John_Coltrane), [The Shape of Jazz to Come](https://en.wikipedia.org/wiki/The_Shape_of_Jazz_to_Come), [Return to Forever](<https://en.wikipedia.org/wiki/Return_to_Forever_(Chick_Corea_album)>), and [The Buffering Cocoon](https://www.nowvsnow.com/).
+I like Jazz, quite a bit. I played trombone and the keyboard in high school. Some of my historically favorite albums are [Duke Ellington & John Coltrane](https://en.wikipedia.org/wiki/Duke_Ellington_%26_John_Coltrane), [The Shape of Jazz to Come](https://en.wikipedia.org/wiki/The_Shape_of_Jazz_to_Come), [Return to Forever](<https://en.wikipedia.org/wiki/Return_to_Forever_(Chick_Corea_album)>), and [The Buffering Cocoon](https://nowvsnow.bandcamp.com/album/the-buffering-cocoon).
 
 ### Coffee
 
