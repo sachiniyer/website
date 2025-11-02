@@ -39,7 +39,7 @@ async function run() {
   var s = 8
   var pos = t
 
-  var createScene = function () {
+  var createScene = async function () {
 
     movementamount = 6;
     var scene = new BABYLON.Scene(engine);
@@ -49,7 +49,7 @@ async function run() {
     camera.attachControl(canvas, true);
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
     light.intensity = 0.5;
-    write();
+    await write();
     d = new Date();
     t = d.toLocaleTimeString();
     console.log(d.toLocaleTimeString());
@@ -78,7 +78,7 @@ async function run() {
         frame: 0,
         value: val
       });
-      val = pos + linenumber * movementamount
+      val = pos + abouttext.length * movementamount
       textKeys.push({
         frame: 750,
         value: val
@@ -106,7 +106,7 @@ async function run() {
 
     textKeys2.push({
       frame: 750,
-      value: timeposition / 10 + linenumber * movementamount - movementamount * 2
+      value: timeposition / 10 + abouttext.length * movementamount - movementamount * 2
     });
     animtext2.setKeys(textKeys2);
     timemesh = time.getMesh();
@@ -145,34 +145,22 @@ async function run() {
     return scene;
 
     async function write() {
+      console.log("abouttext length:", abouttext ? abouttext.length : 0);
+      console.log("abouttext content:", abouttext);
+      if (!abouttext || abouttext.length === 0) {
+        console.error("abouttext is empty or undefined!");
+        writermeshes = [];
+        return;
+      }
       Writer = BABYLON.MeshWriter(scene, { scale: scale, defaultFont: "Arial" });
-      done = false;
-      index = 0;
       writers = [];
-      var startindex = 0;
       position = 70;
-      linenumber = 0;
-      while (!done) {
-        space = false;
-        startindex = index;
-        index = index + 35;
-        linenumber++;
-        console.log(linenumber);
-        if (index >= abouttext.length) {
-          index = abouttext.length - 1;
-          done = true;
-        }
-        else {
-          while (!space) {
-            index++;
-            if (abouttext[index] == ' ') {
-              space = true;
-            }
-          }
-        }
+
+      for (var i = 0; i < abouttext.length; i++) {
+        console.log("Line", i + 1, ":", abouttext[i]);
         position = position - 80;
         writers.push(new Writer(
-          abouttext.slice(startindex, index),
+          abouttext[i],
           {
             "anchor": "center",
             "letter-height": 70,
@@ -185,8 +173,6 @@ async function run() {
             }
           }
         ));
-
-
       }
       writermeshes = [];
       for (i = 0; i < writers.length; i++) {
@@ -200,36 +186,75 @@ async function run() {
 
   };
 
-  function parseText(text) {
-    var lines = text.split('\n');
-    var result = [];
-    for (var i = 0; i < lines.length; i++) {
-      var line = lines[i].trim();
-      if (line.includes('Fun Version')) {
-        break;
-      }
-      else if (line[0] != '#') {
-        result.push(line);
-      }
-    }
-    var converter = new showdown.Converter();
-    var html = converter.makeHtml(result.join(' \n'));
+  function parseText(html) {
     const tempElement = document.createElement('div');
     tempElement.innerHTML = html;
-    const plaintextContent = tempElement.textContent || tempElement.innerText;
 
+    const mainDiv = tempElement.querySelector('#main');
+    if (!mainDiv) {
+      return '';
+    }
 
-    return plaintextContent;
+    function breakIntoLines(text, maxLength) {
+      const words = text.split(' ');
+      const lines = [];
+      let currentLine = '';
 
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine ? currentLine + ' ' + word : word;
+
+        if (testLine.length <= maxLength) {
+          currentLine = testLine;
+        } else {
+          if (currentLine) {
+            lines.push(currentLine);
+          }
+          currentLine = word;
+        }
+      }
+
+      if (currentLine) {
+        lines.push(currentLine);
+      }
+
+      return lines;
+    }
+
+    var result = [];
+    const children = mainDiv.children;
+
+    for (var i = 0; i < children.length; i++) {
+      const element = children[i];
+      const tagName = element.tagName.toLowerCase();
+      const text = element.textContent || element.innerText;
+
+      if (text.includes('Fun Version')) {
+        break;
+      }
+
+      if (tagName.match(/^h[1-6]$/)) {
+        continue;
+      }
+
+      const normalizedText = text.replace(/\s+/g, ' ').trim();
+
+      const lines = breakIntoLines(normalizedText, 60);
+      result.push(...lines);
+    }
+
+    console.log(`Found ${result.length} lines`)
+    return result;
   }
 
-  fetch('/about/about.md')
+  fetch('/about/index.html')
     .then(response => response.text())
     .then(function (data) {
       abouttext = parseText(data);
+      console.log("Parsed abouttext:", abouttext);
     })
-    .then(function () {
-      scene = createScene();
+    .then(async function () {
+      scene = await createScene();
       engine.runRenderLoop(function () {
         scene.render();
       });
