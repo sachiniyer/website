@@ -48,11 +48,11 @@ function createlattile(lat, zoom) {
   return Math.floor(
     ((1 -
       Math.log(
-        Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180),
+        Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)
       ) /
         Math.PI) /
       2) *
-      Math.pow(2, zoom),
+      Math.pow(2, zoom)
   );
 }
 
@@ -107,12 +107,12 @@ window.onload = function () {
     var camera = new BABYLON.FollowCamera(
       "Camera1",
       new BABYLON.Vector3(0, 0, -750),
-      scene,
+      scene
     );
     var camera2 = new BABYLON.FollowCamera(
       "Camera1",
       new BABYLON.Vector3(0, 50, -10),
-      scene,
+      scene
     );
     camera.heightOffset = 50;
     camera.radius = 1.2;
@@ -130,7 +130,7 @@ window.onload = function () {
     camera2.attachControl(canvas, true);
     const light = new BABYLON.HemisphericLight(
       "light",
-      new BABYLON.Vector3(0, 0, 0),
+      new BABYLON.Vector3(0, 0, 0)
     );
 
     //skybox
@@ -139,7 +139,7 @@ window.onload = function () {
     skyboxMaterial.backFaceCulling = false;
     skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
       "./skybox",
-      scene,
+      scene
     );
     skyboxMaterial.reflectionTexture.coordinatesMode =
       BABYLON.Texture.SKYBOX_MODE;
@@ -167,7 +167,7 @@ window.onload = function () {
     var button1 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but1",
       "About",
-      "./about.jpeg",
+      "./about.jpeg"
     );
     button1.width = buttonwidth;
     button1.height = buttonwidth;
@@ -190,7 +190,7 @@ window.onload = function () {
     var button2 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but2",
       "",
-      "./github.png",
+      "./github.png"
     );
     button2.width = buttonwidth;
     button2.height = buttonwidth;
@@ -214,7 +214,7 @@ window.onload = function () {
     var button3 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but3",
       "",
-      "./mail.jpeg",
+      "./mail.jpeg"
     );
     button3.width = buttonwidth;
     button3.height = buttonwidth;
@@ -236,7 +236,7 @@ window.onload = function () {
     var button4 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but4",
       "",
-      "./music.png",
+      "./music.png"
     );
     button4.width = buttonwidth;
     button4.height = buttonwidth;
@@ -258,7 +258,7 @@ window.onload = function () {
     var button5 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but5",
       "",
-      "./sachiniyer.jpg",
+      "./sachiniyer.jpg"
     );
     button5.width = buttonwidth;
     button5.height = buttonwidth;
@@ -281,7 +281,7 @@ window.onload = function () {
     var button6 = BABYLON.GUI.Button.CreateImageWithCenterTextButton(
       "but6",
       "",
-      "./secret.jpeg",
+      "./secret.jpeg"
     );
     button6.width = buttonwidth;
     button6.height = buttonwidth;
@@ -299,7 +299,7 @@ window.onload = function () {
       "tesla task",
       "",
       "",
-      "./tesla.glb",
+      "./tesla.glb"
     );
 
     meshTask.onSuccess = function (task) {
@@ -316,7 +316,7 @@ window.onload = function () {
         "position.z",
         30,
         BABYLON.Animation.ANIMATIONTYPE_FLOAT,
-        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE
       );
 
       var tlaKeys = [];
@@ -389,7 +389,7 @@ window.onload = function () {
       zmax,
       subdivisions,
       precision,
-      scene,
+      scene
     );
     var whiteMaterial = new BABYLON.StandardMaterial("White", scene);
     whiteMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
@@ -402,7 +402,7 @@ window.onload = function () {
       for (var col = 0; col < subdivisions.w; col++) {
         var material = new BABYLON.StandardMaterial(
           "material" + row + "-" + col,
-          scene,
+          scene
         );
         material.diffuseTexture = new BABYLON.Texture(
           "https://tile.openstreetmap.org/" +
@@ -412,7 +412,7 @@ window.onload = function () {
             "/" +
             (yTileBase - row) +
             ".png",
-          scene,
+          scene
         );
         material.diffuseTexture.wrapU = BABYLON.Texture.CLAMP_ADDRESSMODE;
         material.diffuseTexture.wrapV = BABYLON.Texture.CLAMP_ADDRESSMODE;
@@ -437,7 +437,7 @@ window.onload = function () {
           verticesCount,
           base,
           tileIndicesLength,
-          tiledGround,
+          tiledGround
         );
         tiledGround.subMeshes.push(submesh);
         base += tileIndicesLength;
@@ -451,7 +451,7 @@ window.onload = function () {
     lonval = position.coords.longitude;
     latval = position.coords.latitude;
     console.log(
-      "This is localized tiling, so the map that you see is based off your browser's longitude and latitude. If you get red and black squares, it's cause you not cool enough to be drawn by stamen watercolor map",
+      "This is localized tiling, so the map that you see is based off your browser's longitude and latitude. If you get red and black squares, it's cause you not cool enough to be drawn by stamen watercolor map"
     );
     console.log(lonval);
     console.log(latval);
@@ -471,7 +471,7 @@ window.onload = function () {
 
   function error(err) {
     console.log(
-      "Hey, I see that you have blocked location tracking. If you want to turn it on I pinky promise not to track it. I only use it to do some localized tiling cool stuff. I defaulted it to new york, cause new york is cool",
+      "Hey, I see that you have blocked location tracking. If you want to turn it on I pinky promise not to track it. I only use it to do some localized tiling cool stuff. I defaulted it to new york, cause new york is cool"
     );
     const scene = createScene();
     engine.runRenderLoop(function () {

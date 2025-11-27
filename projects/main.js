@@ -34,7 +34,7 @@ async function getProjectsRaw() {
         .then((response) => response.text())
         .then(function (data) {
           res.push({ data: data, name: names[i] });
-        }),
+        })
     );
   }
   await Promise.all(futures);

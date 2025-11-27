@@ -9,36 +9,43 @@ var reponames = [];
 var retain = {};
 
 const classMap = {
-  h1: 'hidden',
-  a: 'reallink'
+  h1: "hidden",
+  a: "reallink",
 };
 
-const bindings = Object.keys(classMap)
-  .map(key => ({
-    type: 'output',
-    regex: new RegExp(`<${key}(.*)>`, 'g'),
-    replace: `<${key} class="${classMap[key]}" $1>`
-  }));
+const bindings = Object.keys(classMap).map((key) => ({
+  type: "output",
+  regex: new RegExp(`<${key}(.*)>`, "g"),
+  replace: `<${key} class="${classMap[key]}" $1>`,
+}));
 const conv = new showdown.Converter({
-  extensions: [...bindings]
+  extensions: [...bindings],
 });
 
-conv.setFlavor('github');
+conv.setFlavor("github");
 
 // check if webcontent.md exists and display that
 // if it does not exists just display readme.md
 // then append head and body to dict that has weights.
 
-
 async function processrepos(repos) {
-
   var elements = {};
   for (let i = 0; i < repos.length; i++) {
     var name = repos[i].name;
     var branch = repos[i].default_branch;
 
-    var repourl = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/webcontent.md";
-    var repourl_back = "https://raw.githubusercontent.com/sachiniyer/" + name + "/" + branch + "/README.md";
+    var repourl =
+      "https://raw.githubusercontent.com/sachiniyer/" +
+      name +
+      "/" +
+      branch +
+      "/webcontent.md";
+    var repourl_back =
+      "https://raw.githubusercontent.com/sachiniyer/" +
+      name +
+      "/" +
+      branch +
+      "/README.md";
 
     var flag = false;
     await fetch(repourl)
@@ -53,14 +60,13 @@ async function processrepos(repos) {
           elements[name] = {
             href: "https://github.com/sachiniyer" + name,
             title: name,
-            body: data
+            body: data,
           };
         }
       })
       .catch((err) => {
         console.log("webcontent.md not found for: " + name);
       });
-
 
     if (!flag) {
       await fetch(repourl_back)
@@ -72,7 +78,7 @@ async function processrepos(repos) {
           elements[name] = {
             href: "https://github.com/sachiniyer" + name,
             title: name,
-            body: data
+            body: data,
           };
         })
         .catch((err) => {
@@ -87,18 +93,24 @@ async function processrepos(repos) {
       final_list.push(elements[w]);
     }
   }
-  var test_final = (e) => { for (let k of final_list) { if (k.title == e) { return false; } } return true; };
+  var test_final = (e) => {
+    for (let k of final_list) {
+      if (k.title == e) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   for (var e in elements) {
-    if (test_final(e) && !(blackweights.includes(e))) {
+    if (test_final(e) && !blackweights.includes(e)) {
       final_list.push(elements[e]);
     }
   }
 
-
   for (var i of final_list) {
-    var newhead = document.createElement('h1');
-    var a = document.createElement('a');
+    var newhead = document.createElement("h1");
+    var a = document.createElement("a");
     a.href = "https://github.com/sachiniyer/" + i.title;
     a.innerHTML = i.title;
     newhead.appendChild(a);
@@ -125,27 +137,23 @@ async function set_weights() {
       color = false;
       continue;
     }
-    if (a == ',') {
+    if (a == ",") {
       if (temp != "") {
         if (color) {
           weights.push(temp);
           temp = "";
-        }
-        else {
+        } else {
           blackweights.push(temp);
           temp = "";
         }
       }
-
-    }
-    else {
+    } else {
       temp += a;
     }
   }
   console.log(weights);
   console.log(blackweights);
 }
-
 
 async function run() {
   await set_weights();

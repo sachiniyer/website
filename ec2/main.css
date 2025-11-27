@@ -1,83 +1,82 @@
 .title {
-    background-color: #088796;
-    color: #FFFFFF
+  background-color: #088796;
+  color: #ffffff;
 }
 
 body {
-    background-color: #3797a4;
+  background-color: #3797a4;
 }
 
 a {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .hidden {
-		font-size: 0;
+  font-size: 0;
 }
 
 h1 {
-		text-align: center;
-		text-decoration: underline;
-    color: #FFFFFF;
-		font-weight: bold
+  text-align: center;
+  text-decoration: underline;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 h2 {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 h3 {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 h4 {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 h5 {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 h6 {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 ol {
-		text-align: center;
-    color: #FFFFFF;
-		list-style-position: inside
-
+  text-align: center;
+  color: #ffffff;
+  list-style-position: inside;
 }
 
 .reallink {
-		color: #b8b8b8
+  color: #b8b8b8;
 }
 
 p {
-    color: #FFFFFF;
-		text-align: center
+  color: #ffffff;
+  text-align: center;
 }
 
 .mybutton {
-    background-color: #088796;
-    outline: none
+  background-color: #088796;
+  outline: none;
 }
 
 .ec2but {
-		background-color: #088796;
-    outline: none;
-		width: 100%;
+  background-color: #088796;
+  outline: none;
+  width: 100%;
 }
 .spacer {
-		margin-top: 20em;
+  margin-top: 20em;
 }
 
 .maintext {
-		padding-left: 20%;
-		padding-right: 20%
+  padding-left: 20%;
+  padding-right: 20%;
 }

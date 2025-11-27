@@ -1,4 +1,3 @@
-
 ## Hosting
 
 ~~I host all of this in aws, cause imma aws fanboy. All of the actual data is stored in s3 buckets. Then depending on whether it is an accessed page or not (all the ones you have seen are) I create a cloudfront distribution for it and route it through api gateway. All of this costs me fairly little and I am have a pretty scalable easy to manage website. Because it goes through api gateway, I can integrate a lot of lambda functions throughout my website and do a lot of aws integration I would not have been able to do otherwise (like the AWS IOT stuff that will come up soon on my camera page). AWS is really a lot of fun for me, and I think it is by far one of the most powerful tools at my disposal right now~~ Man this was cheesy.
@@ -38,4 +37,3 @@ There is a secret button at the bottom of the box.
 ## About page
 
 The coolest thing about this is that all that animated text is not a 3d graphic that I just move. Instead, it is actually all rendered in real time. I connect this to my github account, and whenever I want to change the text I can just change it there and it will automatically change the page. Also, it will take care of spacing and animation times automatically. So ya, there is definitely some cool stuff happening there as well, even if may seem a little boring. Also ya, all that text is 3d.
-

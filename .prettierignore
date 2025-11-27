@@ -1,0 +1,17 @@
+# Minified/vendor files
+packages/showdown.min.js
+
+# Fonts and images
+fonts/
+*.ico
+*.jpg
+*.png
+*.gif
+*.svg
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Other
+LICENSE
